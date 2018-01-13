@@ -1,2 +1,2 @@
-# programmingprincess.github.io
-Personal GitHub pages 
+# jiaqiwu.me
+Personal website hosted on GitHub Pages 

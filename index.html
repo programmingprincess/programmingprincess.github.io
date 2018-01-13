@@ -1,1 +1,510 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>      
+    <!--
+
+         /\_/\
+        ( o.o )
+         > ^ <
+    -->
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500' rel='stylesheet' type='text/css'>
+
+    <meta content="Jiaqi Wu" name="author">
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Jiaqi Wu</title>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-82805479-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body>
+    <nav class = "menu--prospero navbar-default navbar no-fix">
+        <div class = "menu__list container-fluid">
+            <div class = "navbar-header">
+                <a class = "navbar-brand" href= "#">Jiaqi Wu</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class = "collapse navbar-collapse" id = "myNavbar">
+                <ul class = "menu nav navbar-nav">
+                    <li class = "nav-item"><a class = "menu-link" href = "#about">about</a></li>
+                    <li class = "nav-item"><a class = "menu-link" href = "#skills">skills</a></li>
+                    <li class = "nav-item"><a class = "menu-link" href = "#portfolio">portfolio</a></li>
+                    <li class = "nav-item"><a class = "menu-link" href = "#contact">contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class = data-speed=10 data-type="background" id="home">
+        <h1 class = "title">
+            <div class = "text">
+                <div id = "typewriter" class = "content">
+                    <h3>
+                        <p class ='line1'> &lt;!DOCTYPE = HTML&gt;<br>&lt;html&gt;</p>
+                        <p class='line3'>&lt;head&gt;</p>
+                        <p class='line4'>&lt;title&gt; <span style='color:#E7E7E7;'>Welcome to my page! </span>
+                        &lt;/title&gt;
+                        <span class = "dash" style = "margin-left: 2px"></span>
+                        </h3>
+                    </h3>
+                </div>
+            </div>
+        </h1>
+        <a href = "#about" class = "scrolldown" id = "scrolldown">
+            <i class="fa fa-chevron-down fa-3x wrap" aria-hidden="true"></i>
+        </a>
+    </section>
+    <section id="about">
+        <div class = "container about-text">
+            <div class = "row">
+                <div class = "col-sm-6">
+                    <h2 class = "header">Who am I? </h2>
+                    <div class = "center">
+                        <img src = "img/1.jpg" width = "175" class = "portrait" alt= "self-portrait">
+                    </div> <Br>
+                    <p class = "big">Hi! I'm Jiaqi: a <b>developer</b>, <b>researcher</b>, and <b>student</b>. I study computer science and biological sciences at Arizona State University. My previous internships include: software engineering at <b>Salesforce</b> and <b>Optum</b>, and web development at <b>Lucid Agency</b>. 
+                    <br><br>
+                    I am constantly seeking out opportunities to learn and further my growth as a scientist. Aside from my work and studies,
+                    I am also passionate about open-source and diversity initiatives in STEM.
+                    <br><br>
+
+
+                </div>
+                <div class = "col-sm-6">
+                    <h2 class = "header">What do I do outside of development? </h2>
+                    <div class = "row about-icons">
+                        <div class = "col-sm-4 right"><img class = "wow bounceIn" height="95" alt= "globe" src="icons/globe.svg" data-wow-delay="0s"></div>
+                        <div class = "col-sm-8 left"><h2>Travel</h2>
+                        <p>Favorite place? Saint Martin, French Virgin Islands. </p></div>
+                    </div>
+                    <br><br>
+                    <div class = "row about-icons">
+                        <div class = "col-sm-4 right"><img class = "wow bounceIn" height="95" alt="ruler" src="icons/pencil-and-ruler.svg" data-wow-delay="0.2s"></div>
+                        <div class = "col-sm-8 left"><h2>Create</h2>
+                        <p>I like to play guitar and piano, build puzzles, and paint with acrylics and watercolors.</p></div>
+                    </div>
+                    <br><br>
+                    <div class = "row about-icons">
+                        <div class = "col-sm-4 right"><img class = "wow bounceIn" height="95" alt="petri" src="icons/petri-dish.svg" data-wow-delay="0.4s"></div>
+                        <div class = "col-sm-8 left"><h2>Research</h2>
+                        <p>I'm currently studying whether a synthetic fusion protein, PcTF, can activate insulin production genes in pancreatic alpha-cells. </p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section data-speed=10 data-type="background" id="skills">
+        <div class="container skills">
+            <ul class = "right">
+                <li class = "wow slideInLeft" data-wow-delay="0s">Java</li>
+                <li class = "wow slideInLeft" data-wow-delay="0.1s">C/C++</li>
+                <li class = "wow slideInLeft" data-wow-delay="0.2s">HTML/CSS</li>
+                <li class = "wow slideInLeft" data-wow-delay="0.3s">JavaScript</li>
+                <li class = "wow slideInLeft" data-wow-delay="0.4s">Python</li>
+                <li class = "wow slideInLeft" data-wow-delay="0.5s">mySQL</li>
+                <li class = "wow slideInLeft" data-wow-delay="0.6s">PHP</li>
+            </ul>
+        </div>
+    </section>
+    <section id="portfolio">
+        <div class=" portfolio">
+            <ul class="buttons menu--prospero">
+                <li class = "menu-link active" id="all">All</li>
+                <li class = "menu-link" id="app">App</li>
+                <li class = "menu-link" id="web">Web</li>
+                <li class = "menu-link" id="talks">Talks</li>
+            </ul>
+
+            <ul class="tile">
+                <li class="web studygenie">
+                    <a href = "#" data-toggle="modal" data-target="#studygenie">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Web Application: Java, D3.js
+                            <h4 class="big">Study Genie</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="web voiceandtone">
+                    <a href = "#" data-toggle="modal" data-target = "#voiceandtone">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Wordpress Theme Development 
+                            <h4 class="big">Voice and Tone Guide</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="web burgerbuilder">
+                     <a href = "http://github.com/programmingprincess/burgerbuilder" target = "_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Web: Hackathon Project
+                            <h4 class="big">Burger Builder</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="web deserthacks">
+                    <a href = "http://deserthacks.org" target = "_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Website: Landing Page
+                            <h4 class="big">Desert Hacks</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="talks igem">
+                    <a href = "https://fullcircle.asu.edu/students/impressive-at-igem/" target = "_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Syn Bio: Presentation and Poster
+                            <h4 class="small">International Genetically Engineered Machines Competition (iGEM 2016)</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="app homechef">
+                    <a href = "https://github.com/Recipe-App-CodePath/Recipe-App" target = "_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            iOS: Swift
+                            <h4 class="big">HomeChef</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="app sundevildice">
+                    <a href="http://github.com/programmingprincess/team21" target = "_blank">
+                        <div class="tile-overlay">
+                            <div class = "tile-text">
+                                Applet: Java
+                                <h4 class="big">Sun Devil Dice</h4>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <!--<li class = "app">Tweet Tweet</li>-->
+                <li class="app instapix">
+                    <a href="http://github.com/programmingprincess/instapix" target = "_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            iOS: Swift
+                            <h4 class="big">InstaPix</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+
+                <!--<li class = "website">SPARCe</li>-->
+
+                <li class="talks furi">
+                    <a href = "#" data-toggle="modal" data-target="#furi">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Syn Bio: Poster
+                            <h4 class="big">FURI Symposium</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+
+                <li class="talks ibe">
+                    <a href="https://engineering.asu.edu/undergraduate-research/project/jiaqi-wu-furi-travel-grant/" target = "_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Syn Bio: Poster
+                            <h4 class="big">IBE Conference 2016</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="app hollywoo">
+                    <a href = "http://github.com/programmingprincess/hollywoo" target = "_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            iOS: Swift
+                            <h4 class="big">Hollywoo</h4>
+                        </div>
+                    </div>
+                    </a>
+                </li>
+
+                <li class="web geniusfactory">
+                    <a href = "#" data-toggle="modal" data-target="#genius">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Wordpress
+                            <h4 class="big">Genius Factory</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="talks synberc">
+                    <a href="http://blogs.plos.org/synbio/2015/11/04/celebrating-nearly-a-decade-of-research-at-synberc/" target="_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Syn Bio: Presentation and Poster
+                            <h4 class="big">Synberc 2015</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="app gilbert">
+                    <a href="#" data-toggle="modal" data-target="#gilbert">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            MIT App Inventor
+                            <h4 class="big">Gilbert Fire</h4>
+                        </div>
+                    </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section data-speed=5 data-type="background" id="contact">
+        <div class = "container">
+            <div class="row icons">
+                <div class="col-sm-4">
+                    <a href="http://twitter.com/thejiaqiwu" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'twitter'});" target = "_blank"><i aria-hidden= "true" class="fa fa-twitter fa-5x wow bounceIn" data-wow-delay="0s"></i></a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="http://github.com/programmingprincess" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'github'});" target = "_blank"><i aria-hidden= "true" class="fa fa-github fa-5x wow bounceIn" data-wow-delay="0.2s"></i></a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="http://linkedin.com/in/jiaqiwu1" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'linkedin'});" target = "_blank"><i aria-hidden= "true" class="fa fa-linkedin fa-5x wow bounceIn" data-wow-delay="0.4s"></i></a>
+                </div>
+            </div>
+            <div class="chat">
+                <h2>I'm available to chat.</h2>
+            </div>
+            <div class="email">
+                <a href = "mailto:jiaqiwu@asu.edu" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'email'});"><button class="button button--aylen">Email</button></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <section id = "divider">
+            <div class = "center-me">
+                <a href = "#" id = "scrollup">
+                    <i class="fa fa-chevron-up fa-3x wrap" aria-hidden="true"></i>
+                    <i class="fa fa-chevron-up fa-3x wrap" aria-hidden="true"></i>
+                </a>
+                <h3>Back to top</h3>
+            </div>
+
+            <!--<p class = "end">Made with <i class="fa fa-heart" aria-hidden="true" style = "color: red"></i> by Jiaqi Wu</p>-->
+            <p class = "end">© 2017 Jiaqi Wu. Updated: 12/2017 <br>
+                jiaqiwu@asu.edu </p>
+
+        </section>
+
+        <script src="js/jquery-1.12.3.min.js"></script>
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/my.js">
+        </script>
+    </footer>
+</body>
+</html>
+
+
+<div id="voiceandtone" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Wordpress Theme: Voice and Tone Guide</h4>
+              </div>
+              <div class="modal-body">
+                <p>Voice and tone guides are used to help clients develop better content. These contain short, helpful tips that suggest how to integrate a brand's unique voice into their content online. </p>
+                <img src = "portfolio/voice-and-tone-1.png" alt= "website-icons"></a>
+                <p>I was asked to develop this theme for a digital marketing agency. We intended to build individual guides for each client and then hand them off to help them manage their internet prescence.  </p>
+                <img src = "portfolio/voice-and-tone-2.png" alt= "website-icons"></a>
+                <p class = "caption">Upload new logo through Wordpress theme customizer. </p>
+
+                <p>A lot of key site features were editable through Wordpress, so clients would have the flexibility of customizing their voice and tone guide.</p>
+
+                <img src = "portfolio/voice-and-tone-3.png" alt= "website-icons"></a>
+                <p class = "caption">Change color scheme through Wordpress theme customizer. </p>
+
+                <img src = "portfolio/voice-and-tone-4.png" alt= "website-icons"></a>
+
+                <p>Each section on the content type page is also editable (i.e.: user, tips, user's feelings, and sample copy). These are linked through advanced custom fields.</p>
+
+                 <p><b>Skills utilized: </b> HTML/CSS, JavaScript/jQuery, and PHP</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+      </div>
+    </div>
+<div id="studygenie" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> StudyGenie: An intelligent and collaborative web-based study platform </h4>
+          </div>
+          <div class="modal-body">
+            <h4>  <b>Accepted to ACM's <a href = 'https://sigcse2018.sigcse.org/info/cfp.html' target='_blank'>SIGCSE 2018 Student Research Competition</a>, Baltimore, Maryland.</b></h4>
+            <p>Study Genie is a web-based study tool that aims to explore the role of collaborative learning and note-taking on student performance in lower division computer science courses. Students may write their notes or code snippets in mini notecards, and then assemble them into a cheatsheet for use during an exam.
+            </p>
+            <img src='http://i.imgur.com/dyAhRkP.gif' title='Demo of study genie' width='' alt='Video Walkthrough' />
+
+            <p>All student movements are tracked (i.e., notecard clicked, cheatsheet added, copying and pasting vs. typing), allowing my team to analyze and understand how students study, and then compare these statistics with overall student performance in the course and exams. </p>
+
+            <p>This application differs from others in that it allows students to share and manipulate their notes on a smaller, topic-based scale, in the form of mini notecards. Deployed on a Windows Server using IIS and HTTP Platform Handler. </p>
+
+
+            <p>Implemented Visualizations: </p> 
+            <img src = "portfolio/studygenie-visualizations.png" width="200" alt= "website-home">
+            <p>We produced visualizations split into two categories to represent two types of data: activity and content. Activity-based visualizations (usage breakdown and calendar) reflect a student's actions and behavior while using the application; content-based visualizations (topic frequencies) build models around note content to supplement student learning experience. </p>
+
+            <p><b>Skills utilized: </b> Java, SQL, D3.js, HTML/CSS, JavaScript/jQuery, and more</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+  </div>
+</div>
+
+    <div id="furi" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">FURI: Synthetic Biology Research</h4>
+              </div>
+              <div class="modal-body">
+                <p> The <a href ="https://engineering.asu.edu/furi/furi-symposiums/" target = "_blank">Fulton Undergraduate Research Symposium</a> at ASU takes place every semester. Hundreds of grant-funded students present their research in the form of a poster to their peers, professors, faculty, and industry professionals. In Spring and Fall 2016, I presented my research on quorum sensing: <i>Examining the natural diversity of quorum sensing for orthogonal pathways</i></p>
+                <br>
+                    <a href = "portfolio/Wu,Jiaqi-final.pdf" target = "_blank"><img src = "portfolio/furi-1.png" alt= "poster"></a> <br><br>
+                <p> <b>Abstract</b>: Homoserine lactone (HSL) quorum sensing (QS) is a method of bacterial cell-to-cell communication.
+                    Bioengineers have incorporated QS into biological circuits, using the bacteria’s signaling pathway as a “bio-wire”
+                    to connect steps in logical operations. Complex genetic circuitry is inhibited by pathway overlap, or “crosstalk,”
+                    and lack of pathways (only four out of 100s have been used in synthetic systems to date). To fill this gap, we
+                    have designed a decoupled system to test pathways for orthogonality (lack of crosstalk) using a sender cell,
+                    which carries the HSL synthase, and receiver cell, which carries the QS promoter and regulator. Our research will ultimately
+                    expand the synthetic biology toolbox and provide engineers with more flexibility when building complex biological circuitry.
+                </p>
+                <br>
+                <p><b>TL;DR:</b> We are looking for more orthogonal, or non-overlapping, quorum sensing communication pathwhays to use as a tool for
+                bioengineers to build complex biological circuitry.</p>
+                <br>
+                <p>I have been working on this research since March 2015, at <a href = "https://hayneslabasu.wordpress.com/" target = "_blank">The Haynes
+                    Lab</a> at ASU. We are working towards publishing our data in the near future. </p>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+      </div>
+    </div>
+    <div id="genius" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Genius Factory Wordpress Website</h4>
+              </div>
+              <div class="modal-body">
+                <p> One of the first websites I've ever built was for Genius Factory, a local
+                    tutoring center. I built this Wordpress website using the <a href = "https://www.elegantthemes.com/gallery/divi/" target = "_blank">Divi theme</a>.  <br></p>
+
+                <h3>Highlights:</h3>
+                <p>The home page features a full-width slider. </p>
+                <a href = "portfolio/geniusfactory.png" target = "_blank"><img src = "portfolio/geniusfactory.png" width="200" alt= "website-home"></a>
+
+                <p>Below the slider, four icons are displayed that correlate with the website's main features. An optional
+                call-to-action banner can be added above the icons and below the slider. </p>
+
+                <a href = "portfolio/geniusfactory-1.png" target = "_blank"><img src = "portfolio/geniusfactory-1.png" alt= "website-icons"></a>
+
+                <p>The about page contains a gallery of Genius Factory's core values. Below the gallery, you can find
+                more information on the center's philosophy</p>
+
+                <a href = "portfolio/geniusfactory-2.png" target = "_blank"><img src = "portfolio/geniusfactory-2.png" alt= "website-about"></a>
+                <br><br>
+
+                <p>Although some of the components I implemented remain, the current website has been modified.</p>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+      </div>
+    </div>
+
+
+    <div id="gilbert" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Gilbert Fire Android App</h4>
+              </div>
+              <div class="modal-body">
+                <p>This app was created by a team of three girls in March 2014, my senior year of high school. The app was submitted to the <a href ="https://www.sparkappleague.com/" target = "_blank">SPARK App Leage</a>
+                Mobile App Competition, partnered with Gilbert Fire Department and Intel. <br><br>
+
+                The purpose of our app is to inform the citizens of Gilbert about their town's fire amenities and
+                general fire safety tips. Since our audience ranges from children and teenagers to the elderly, our
+                main focus was user-friendless and accessiblity. </p>
+
+                <p>We implemented a standard grid layout for the menu with Gilbert social media icons on the bottom. </p>
+                <a href = "portfolio/gilbert-home-2.png" target = "_blank"><img src = "portfolio/gilbert-home-2.png" alt= "app-home"></a>
+                <p>A main feature of the app that I designed was the Google Maps location integration. This feature utilizes the Google Maps API
+                to locate the fire station nearest the user's location. It also allows the user to see a list of fire stations in Gilbert, and their
+                distance from the user's location. </p>
+                <a href = "portfolio/gilbert-location.png" target = "_blank"><img src = "portfolio/gilbert-location.png" alt= "app-location"></a>
+                <p>The entire app was built using <a href = "http://appinventor.mit.edu/" target = "_blank">MIT App Inventor</a>, a GUI that utilizes
+                text-based building blocks to create mobile apps. </p>
+                <a href = "portfolio/gilbert-backend.png" target = "_blank"><img src = "portfolio/gilbert-backend.png" alt= "app-backend"></a>
+                <p>A modified version of the mobile application, inspired by our original app,
+                is available in the Google Play Store! </p>
+
+                <p><b>Awards: </b> "Best Overall App", "Girls in STEM"</p>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href = "https://play.google.com/store/apps/details?id=com.gfandroid&hl=en" target = "_target">
+                    <button type="button" class="btn btn-default">View in Play Store <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </a>
+              </div>
+            </div>
+      </div>
+    </div>
