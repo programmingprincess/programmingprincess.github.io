@@ -7,6 +7,14 @@
         ( o.o )
          > ^ <
     -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K7X4TZW');</script>
+    <!-- End Google Tag Manager -->
+
     <link rel="icon" type="image/png" href="favicon.ico">
 
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -20,17 +28,21 @@
 
     <title>Jiaqi Wu</title>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112417000-1"></script>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-        ga('create', 'UA-82805479-1', 'auto');
-        ga('send', 'pageview');
+      gtag('config', 'UA-112417000-1');
     </script>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7X4TZW"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <nav class = "menu--prospero navbar-default navbar no-fix">
         <div class = "menu__list container-fluid">
             <div class = "navbar-header">
@@ -164,7 +176,7 @@
                 </li>
 
                 <li class="web deserthacks">
-                    <a href = "http://deserthacks.org" target = "_blank">
+                    <a href = "#" data-toggle="modal" data-target = "#deserthacks">
                     <div class="tile-overlay">
                         <div class="tile-text">
                             Website: Landing Page
@@ -317,7 +329,7 @@
             </div>
 
             <!--<p class = "end">Made with <i class="fa fa-heart" aria-hidden="true" style = "color: red"></i> by Jiaqi Wu</p>-->
-            <p class = "end">© 2017 Jiaqi Wu. Updated: 12/2017 <br>
+            <p class = "end">© 2017 Jiaqi Wu. Updated: 01/2018 <br>
                 jiaqiwu@asu.edu </p>
 
         </section>
@@ -332,6 +344,40 @@
 </body>
 </html>
 
+
+<div id="deserthacks" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Desert Hacks: Arizona State's first collegiate MLH hackathon</h4>
+          </div>
+          <div class="modal-body">
+            <h4><b> 200+ attendees, 18 sponsors, 7 partners, $9k+ in prizes. </b></h4> 
+            <p>Desert Hacks was founded at Arizona State University with the goal of building a collaborative and innovative community without boundaries. In February 2017, Desert Hacks welcomed students from around the country to participate in a weekend of learning new concepts, building new projects, meeting new people, and being a part of a new, exciting experience. A majority of our attendees were beginners or students who have never attended a hackathon before. </p>
+
+            <p>As a member of the marketing committee, I helped design and develop our website, and ran our social media pages (including Facebook, Snapchat, and Twitter).</p>
+
+            <img src='https://i.imgur.com/511lk4Z.gif' title='Demo of Desert Hacks' width='' alt='Video Walkthrough' />
+            <p class = "caption">A walkthrough of Desert Hacks's home page</p>
+
+            <br>
+
+            <p>Additionally, I designed and developed the live website, which assisted hackers during the event. </p>
+
+             <img src='https://i.imgur.com/HvBHHMi.gif' title='Demo of Desert Hacks Live' width='' alt='Video Walkthrough' />
+             <p class = "caption">Schedule was updated in realtime throughout the event (with JavaScript). Sponsor APIs, prizes, hardware, and FAQs were also included in the live site.</p>
+        
+
+            <p><b>Skills utilized: </b> JavaScript/jQuery, HTML/CSS, PHP, social media</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+  </div>
+</div>
 
 <div id="voiceandtone" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -363,7 +409,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
-      </div>
+        </div>
     </div>
 <div id="studygenie" class="modal fade" role="dialog">
   <div class="modal-dialog">
