@@ -303,7 +303,7 @@
                     <a href="http://twitter.com/thejiaqiwu" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'twitter'});" target = "_blank"><i aria-hidden= "true" class="fa fa-twitter fa-5x wow bounceIn" data-wow-delay="0s"></i></a>
                 </div>
                 <div class="col-sm-4">
-                    <a href="http://github.com/programmingprincess" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'github'});" target = "_blank"><i aria-hidden= "true" class="fa fa-github fa-5x wow bounceIn" data-wow-delay="0.2s"></i></a>
+                    <a href="https://github.com/programmingprincess" onclick = "trackOutboundLink('https://github.com/programmingprincess'); return false;" target = "_blank"><i aria-hidden= "true" class="fa fa-github fa-5x wow bounceIn" data-wow-delay="0.2s"></i></a>
                 </div>
                 <div class="col-sm-4">
                     <a href="http://linkedin.com/in/jiaqiwu1" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'linkedin'});" target = "_blank"><i aria-hidden= "true" class="fa fa-linkedin fa-5x wow bounceIn" data-wow-delay="0.4s"></i></a>
@@ -333,6 +333,23 @@
                 jiaqiwu@asu.edu </p>
 
         </section>
+
+        <script>
+        /**
+        * Function that tracks a click on an outbound link in Analytics.
+        * This function takes a valid URL string as an argument, and uses that URL string
+        * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+        * using 'navigator.sendBeacon' in browser that support it.
+        */
+        var trackOutboundLink = function(url) {
+          gtag('event', 'click', {
+            'event_category': 'outbound',
+            'event_label': url,
+            'transport_type': 'beacon',
+            'event_callback': function(){document.location = url;}
+          });
+        }
+        </script>
 
         <script src="js/jquery-1.12.3.min.js"></script>
         <script src="js/jquery.easing.min.js"></script>
