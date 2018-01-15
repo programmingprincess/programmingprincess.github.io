@@ -37,6 +37,22 @@
 
       gtag('config', 'UA-112417000-1');
     </script>
+    <script>
+        /**
+        * Function that tracks a click on an outbound link in Analytics.
+        * This function takes a valid URL string as an argument, and uses that URL string
+        * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+        * using 'navigator.sendBeacon' in browser that support it.
+        */
+        var trackOutboundLink = function(url) {
+          gtag('event', 'click', {
+            'event_category': 'outbound',
+            'event_label': url,
+            'transport_type': 'beacon',
+            'event_callback': function(){document.location = url;}
+          });
+        }
+    </script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -333,23 +349,6 @@
                 jiaqiwu@asu.edu </p>
 
         </section>
-
-        <script>
-        /**
-        * Function that tracks a click on an outbound link in Analytics.
-        * This function takes a valid URL string as an argument, and uses that URL string
-        * as the event label. Setting the transport method to 'beacon' lets the hit be sent
-        * using 'navigator.sendBeacon' in browser that support it.
-        */
-        var trackOutboundLink = function(url) {
-          gtag('event', 'click', {
-            'event_category': 'outbound',
-            'event_label': url,
-            'transport_type': 'beacon',
-            'event_callback': function(){document.location = url;}
-          });
-        }
-        </script>
 
         <script src="js/jquery-1.12.3.min.js"></script>
         <script src="js/jquery.easing.min.js"></script>
