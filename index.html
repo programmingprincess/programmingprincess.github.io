@@ -7,14 +7,6 @@
         ( o.o )
          > ^ <
     -->
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K7X4TZW');</script>
-    <!-- End Google Tag Manager -->
-
     <link rel="icon" type="image/png" href="favicon.ico">
 
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -37,6 +29,7 @@
 
       gtag('config', 'UA-112417000-1');
     </script>
+
     <script>
     /**
     * Function that tracks a click on an outbound link in Analytics.
@@ -55,10 +48,6 @@
     </script>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7X4TZW"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <nav class = "menu--prospero navbar-default navbar no-fix">
         <div class = "menu__list container-fluid">
             <div class = "navbar-header">
@@ -316,13 +305,13 @@
         <div class = "container">
             <div class="row icons">
                 <div class="col-sm-4">
-                    <a href="http://twitter.com/thejiaqiwu" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'twitter'});" target = "_blank"><i aria-hidden= "true" class="fa fa-twitter fa-5x wow bounceIn" data-wow-delay="0s"></i></a>
+                    <a href="http://twitter.com/thejiaqiwu" target = "_blank" onclick = "trackOutboundLink('http://twitter.com/thejiaqiwu'); return false;" ><i aria-hidden= "true" class="fa fa-twitter fa-5x wow bounceIn" data-wow-delay="0s"></i></a>
                 </div>
                 <div class="col-sm-4">
-                    <a href="https://github.com/programmingprincess" onclick = "trackOutboundLink('https://github.com/programmingprincess'); return false;" target = "_blank"><i aria-hidden= "true" class="fa fa-github fa-5x wow bounceIn" data-wow-delay="0.2s"></i></a>
+                    <a href="https://github.com/programmingprincess" target = "_blank" onclick = "trackOutboundLink('https://github.com/programmingprincess'); return false;" ><i aria-hidden= "true" class="fa fa-github fa-5x wow bounceIn" data-wow-delay="0.2s"></i></a>
                 </div>
                 <div class="col-sm-4">
-                    <a href="http://linkedin.com/in/jiaqiwu1" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'linkedin'});" target = "_blank"><i aria-hidden= "true" class="fa fa-linkedin fa-5x wow bounceIn" data-wow-delay="0.4s"></i></a>
+                    <a href="http://linkedin.com/in/jiaqiwu1" target = "_blank" onclick = "trackOutboundLink('http://linkedin.com/in/jiaqiwu1'); return false;" ><i aria-hidden= "true" class="fa fa-linkedin fa-5x wow bounceIn" data-wow-delay="0.4s"></i></a>
                 </div>
             </div>
             <div class="chat">
@@ -570,4 +559,3 @@
             </div>
       </div>
     </div>
-<a href="http://www.example.com" onclick="trackOutboundLink('http://www.example.com'); return false;">Check out example.com</a>
