@@ -13,7 +13,9 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/animate.min.css" rel="stylesheet" type="text/css">
     <link href="css/main.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Inconsolata|Roboto:100,300,400" rel="stylesheet">
+    <!--<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">-->
+
 
     <meta name="author" content="Jiaqi Wu">
     <meta name="description" content="Computer science student at Arizona State University, interested in data science and biological research.">
@@ -45,7 +47,7 @@
     * This function takes a valid URL string as an argument, and uses that URL string
     * as the event label. Setting the transport method to 'beacon' lets the hit be sent
     * using 'navigator.sendBeacon' in browser that support it.
-    */
+    **/
     var trackOutboundLink = function(url) {
       gtag('event', 'click', {
         'event_category': 'outbound',
@@ -57,109 +59,86 @@
     </script>
 </head>
 <body>
-    <nav class = "menu--prospero navbar-default navbar no-fix">
-        <div class = "menu__list container-fluid">
-            <div class = "navbar-header">
-                <a class = "navbar-brand" href= "#">Jiaqi Wu</a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class = "collapse navbar-collapse" id = "myNavbar">
-                <ul class = "menu nav navbar-nav">
-                    <li class = "nav-item"><a class = "menu-link" href = "#about">about</a></li>
-                    <li class = "nav-item"><a class = "menu-link" href = "#skills">skills</a></li>
-                    <li class = "nav-item"><a class = "menu-link" href = "#portfolio">portfolio</a></li>
-                    <li class = "nav-item"><a class = "menu-link" href = "#contact">contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <section data-speed=10 data-type="background" id="home">
+        <div class = "home-text">
+            <div class = "typewriter" >
+                <span id="type"><span style="color:#72CFEC;">echo</span><span style="color:#E7D76D;"> 'Hello, world!'</span>;</span><span class = "dash"></span>
+            </div> <br>
+            
+            <a class = "home-icon" rel = "me" href="http://twitter.com/thejiaqiwu" target = "_blank" onclick = "trackOutboundLink('http://twitter.com/thejiaqiwu'); return false;" ><i aria-hidden= "true" class="fa fa-twitter fa-3x wow bounceIn" data-wow-delay="0s"></i></a>
+            
+            <a class = "home-icon" rel = "me" href="https://github.com/programmingprincess" target = "_blank" onclick = "trackOutboundLink('https://github.com/programmingprincess'); return false;" ><i aria-hidden= "true" class="fa fa-github fa-3x wow bounceIn" data-wow-delay="0.2s"></i></a> 
+            
+            <a class = "home-icon" rel = "me" href="http://linkedin.com/in/jiaqiwu1" target = "_blank" onclick = "trackOutboundLink('http://linkedin.com/in/jiaqiwu1'); return false;" ><i aria-hidden= "true" class="fa fa-linkedin fa-3x wow bounceIn" data-wow-delay="0.4s"></i></a>
 
-    <section class = data-speed=10 data-type="background" id="home">
-        <h1 class = "title">
-            <div class = "text">
-                <div id = "typewriter" class = "content">
-                    <h3>
-                        <p class ='line1'> &lt;!DOCTYPE = HTML&gt;<br>&lt;html&gt;</p>
-                        <p class='line3'>&lt;head&gt;</p>
-                        <p class='line4'>&lt;title&gt; <span style='color:#E7E7E7;'>Welcome to my page! </span>
-                        &lt;/title&gt;
-                        <span class = "dash" style = "margin-left: 2px"></span>
-                        </h3>
-                    </h3>
-                </div>
-            </div>
-        </h1>
+            <a class = "home-icon" rel = "me" href = "mailto:jiaqiwu@asu.edu"><i aria-hidden= "true" class="fa fa-envelope fa-3x wow bounceIn" data-wow-delay="0.6s"></i></a> 
+        
+        </div>
+
+       
         <a href = "#about" class = "scrolldown" id = "scrolldown">
             <i class="fa fa-chevron-down fa-3x wrap" aria-hidden="true"></i>
         </a>
     </section>
-    <section id="about">
-        <div class = "container about-text">
+    <section id="main">
+        <!--<div id = "navbar" class = "navbar">
+            <a id = "nabout">about</a> 
+            <a id = "portfolio">portfolio</a>  
+            <a id = "contact">contact</a>
+        </div>-->
+        <div class = "about container page animated" id = "about">
             <div class = "row">
-                <div class = "col-sm-6">
-                    <h2 class = "header">Who am I? </h2>
-                    <div class = "center">
-                        <img src = "img/1.jpg" width = "175" class = "portrait" alt= "self-portrait">
-                    </div> <Br>
-                    <p class = "big">Hi! I'm Jiaqi: a <b>developer</b>, <b>researcher</b>, and <b>student</b>. I study computer science and biological sciences at Arizona State University. My previous internships include: software engineering at <b>Salesforce</b> and <b>Optum</b>, and web development at <b>Lucid Agency</b>. 
-                    <br><br>
-                    I am constantly seeking out opportunities to learn and further my growth as a scientist. Aside from my work and studies,
-                    I am also passionate about open-source and diversity initiatives in STEM.
-                    <br><br>
-
-
-                </div>
-                <div class = "col-sm-6">
-                    <h2 class = "header">What do I do outside of development? </h2>
-                    <div class = "row about-icons">
-                        <div class = "col-sm-4 right"><img class = "wow bounceIn" height="95" alt= "globe" src="icons/globe.svg" data-wow-delay="0s"></div>
-                        <div class = "col-sm-8 left"><h2>Travel</h2>
-                        <p>Favorite place? Saint Martin, French Virgin Islands. </p></div>
-                    </div>
-                    <br><br>
-                    <div class = "row about-icons">
-                        <div class = "col-sm-4 right"><img class = "wow bounceIn" height="95" alt="ruler" src="icons/pencil-and-ruler.svg" data-wow-delay="0.2s"></div>
-                        <div class = "col-sm-8 left"><h2>Create</h2>
-                        <p>I like to play guitar and piano, build puzzles, and paint with acrylics and watercolors.</p></div>
-                    </div>
-                    <br><br>
-                    <div class = "row about-icons">
-                        <div class = "col-sm-4 right"><img class = "wow bounceIn" height="95" alt="petri" src="icons/petri-dish.svg" data-wow-delay="0.4s"></div>
-                        <div class = "col-sm-8 left"><h2>Research</h2>
-                        <p>I'm currently studying whether a synthetic fusion protein, PcTF, can activate insulin production genes in pancreatic alpha-cells. </p></div>
-                    </div>
+                <div class = "col-md-6 col-md-offset-3">
+                    <h2 class = "header">Hi, I'm Jiaqi</h2>
+                    <img src = "img/1.jpg" width = "175" class = "portrait" alt= "self-portrait">
+                    <br>
+                    <!--<i class="fa fa-heart fa-2x right-padding" aria-hidden="true"></i> 
+                    <p class = "icon-caption"> Likes: </p> <p class = "icon-caption" id = "likes"> stuff</p> <br>-->
+                    <i class="fa fa-map-marker fa-2x right-padding" aria-hidden="true"></i>
+                    <p class = "icon-caption">San Francisco</p> <br>
+                    <i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i> 
+                    <p class = "icon-caption">University of Illinois at Urbana-Champaign</a> </p><br>
+                    <!--<i class="fa fa-book fa-2x right-padding" aria-hidden="true"></i>
+                    <p class = "icon-caption"><a> How to Create a Mind </a></p> -->
+                    <i class="fa fa-book fa-2x right-padding" aria-hidden="true"></i>
+                    <p class = "icon-caption">Reading: <a href = "https://www.goodreads.com/review/list/11107091?shelf=currently-reading" target = "_blank"> How to Create a Mind </a></p>
+                </div> 
+                <div class = "col-md-6 col-md-offset-3">
+                    <p class = "big">
+                    First year M.S. student at UIUC with research interests in computational biology, synthetic biology, and machine learning. Passionate about open-source and increasing equity in STEM. Loves painting, traveling, 3D puzzles, and Westworld. 
+                    </p>
+                    <br>
                 </div>
             </div>
+            <div class="nav" id = "portfolio-button">
+                <a href = "#portfolio" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'email'});"><button class="button button--aylen">View Portfolio</button></a>
+            </div>
         </div>
-    </section>
-    <section data-speed=10 data-type="background" id="skills">
-        <div class="container skills">
-            <ul class = "right">
-                <li class = "wow slideInLeft" data-wow-delay="0s">Java</li>
-                <li class = "wow slideInLeft" data-wow-delay="0.1s">C/C++</li>
-                <li class = "wow slideInLeft" data-wow-delay="0.2s">HTML/CSS</li>
-                <li class = "wow slideInLeft" data-wow-delay="0.3s">JavaScript</li>
-                <li class = "wow slideInLeft" data-wow-delay="0.4s">Python</li>
-                <li class = "wow slideInLeft" data-wow-delay="0.5s">mySQL</li>
-                <li class = "wow slideInLeft" data-wow-delay="0.6s">PHP</li>
-            </ul>
-        </div>
-    </section>
-    <section id="portfolio">
-        <div class=" portfolio">
+
+        <div class="portfolio container page animated" id = "portfolio">
+
+            <div class = "back"><a href = "#about" class = "nav" id = "about-button"><i class="fa fa-angle-left fa-3x" aria-hidden="true"></i>
+            <p class = "icon-caption">back to about</p></a></div>
+
             <ul class="buttons menu--prospero">
                 <li class = "menu-link active" id="all">All</li>
                 <li class = "menu-link" id="app">App</li>
                 <li class = "menu-link" id="web">Web</li>
-                <li class = "menu-link" id="talks">Talks</li>
+                <li class = "menu-link" id="research">Research</li>
             </ul>
 
             <ul class="tile">
-                <li class="web studygenie">
+                <li class="research wbcd">
+                    <a href = "#" data-toggle="modal" data-target="#wbcd">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Machine Learning: R
+                            <h4 class="big">Tumor Classification</h4>
+                        </div>
+                    </div></a>
+                </li>
+
+                <li class="research studygenie">
                     <a href = "#" data-toggle="modal" data-target="#studygenie">
                     <div class="tile-overlay">
                         <div class="tile-text">
@@ -179,6 +158,30 @@
                     </div></a>
                 </li>
 
+                <li class="app sundevildice">
+                    <a href="http://github.com/programmingprincess/team21" target = "_blank">
+                        <div class="tile-overlay">
+                            <div class = "tile-text">
+                                Applet: Java
+                                <h4 class="big">Sun Devil Dice</h4>
+                            </div>
+                            <div class = "external-link"><i class="fa fa-external-link" aria-hidden="true"></i></div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="research igem">
+                    <a rel = "nofollow" href = "https://fullcircle.asu.edu/students/impressive-at-igem/" target = "_blank">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Syn Bio: Presentation and Poster
+                            <h4 class="big">iGEM 2016</h4>
+                        </div>
+                        <div class = "external-link"><i class="fa fa-external-link" aria-hidden="true"></i></div>
+                    </div></a>
+                </li>
+
+
                 <li class="web burgerbuilder">
                      <a href = "http://github.com/programmingprincess/burgerbuilder" target = "_blank">
                     <div class="tile-overlay">
@@ -186,6 +189,7 @@
                             Web: Hackathon Project
                             <h4 class="big">Burger Builder</h4>
                         </div>
+                        <div class = "external-link"><i class="fa fa-external-link" aria-hidden="true"></i></div>
                     </div></a>
                 </li>
 
@@ -199,16 +203,6 @@
                     </div></a>
                 </li>
 
-                <li class="talks igem">
-                    <a rel = "nofollow" href = "https://fullcircle.asu.edu/students/impressive-at-igem/" target = "_blank">
-                    <div class="tile-overlay">
-                        <div class="tile-text">
-                            Syn Bio: Presentation and Poster
-                            <h4 class="small">International Genetically Engineered Machines Competition (iGEM 2016)</h4>
-                        </div>
-                    </div></a>
-                </li>
-
                 <li class="app homechef">
                     <a href = "https://github.com/Recipe-App-CodePath/Recipe-App" target = "_blank">
                     <div class="tile-overlay">
@@ -216,21 +210,10 @@
                             iOS: Swift
                             <h4 class="big">HomeChef</h4>
                         </div>
+                    <div class = "external-link"><i class="fa fa-external-link" aria-hidden="true"></i></div>
                     </div></a>
                 </li>
 
-                <li class="app sundevildice">
-                    <a href="http://github.com/programmingprincess/team21" target = "_blank">
-                        <div class="tile-overlay">
-                            <div class = "tile-text">
-                                Applet: Java
-                                <h4 class="big">Sun Devil Dice</h4>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!--<li class = "app">Tweet Tweet</li>-->
                 <li class="app instapix">
                     <a href="http://github.com/programmingprincess/instapix" target = "_blank">
                     <div class="tile-overlay">
@@ -238,30 +221,7 @@
                             iOS: Swift
                             <h4 class="big">InstaPix</h4>
                         </div>
-                    </div></a>
-                </li>
-
-
-                <!--<li class = "website">SPARCe</li>-->
-
-                <li class="talks furi">
-                    <a href = "#" data-toggle="modal" data-target="#furi">
-                    <div class="tile-overlay">
-                        <div class="tile-text">
-                            Syn Bio: Poster
-                            <h4 class="big">FURI Symposium</h4>
-                        </div>
-                    </div></a>
-                </li>
-
-
-                <li class="talks ibe">
-                    <a rel = "nofollow" href="https://engineering.asu.edu/undergraduate-research/project/jiaqi-wu-furi-travel-grant/" target = "_blank">
-                    <div class="tile-overlay">
-                        <div class="tile-text">
-                            Syn Bio: Poster
-                            <h4 class="big">IBE Conference 2016</h4>
-                        </div>
+                        <div class = "external-link"><i class="fa fa-external-link" aria-hidden="true"></i></div>
                     </div></a>
                 </li>
 
@@ -272,27 +232,19 @@
                             iOS: Swift
                             <h4 class="big">Hollywoo</h4>
                         </div>
+                        <div class = "external-link"><i class="fa fa-external-link" aria-hidden="true"></i></div>
                     </div>
                     </a>
                 </li>
 
-                <li class="web geniusfactory">
-                    <a href = "#" data-toggle="modal" data-target="#genius">
-                    <div class="tile-overlay">
-                        <div class="tile-text">
-                            Wordpress
-                            <h4 class="big">Genius Factory</h4>
-                        </div>
-                    </div></a>
-                </li>
-
-                <li class="talks synberc">
+                <li class="research synberc">
                     <a rel = "nofollow" href="http://blogs.plos.org/synbio/2015/11/04/celebrating-nearly-a-decade-of-research-at-synberc/" target="_blank">
                     <div class="tile-overlay">
                         <div class="tile-text">
                             Syn Bio: Presentation and Poster
                             <h4 class="big">Synberc 2015</h4>
                         </div>
+                        <div class = "external-link"><i class="fa fa-external-link" aria-hidden="true"></i></div>
                     </div></a>
                 </li>
 
@@ -309,28 +261,30 @@
             </ul>
         </div>
     </section>
-
     <section data-speed=5 data-type="background" id="contact">
         <div class = "container">
-            <div class="row icons">
-                <div class="col-sm-4">
-                    <a rel = "me" href="http://twitter.com/thejiaqiwu" target = "_blank" onclick = "trackOutboundLink('http://twitter.com/thejiaqiwu'); return false;" ><i aria-hidden= "true" class="fa fa-twitter fa-5x wow bounceIn" data-wow-delay="0s"></i></a>
-                </div>
-                <div class="col-sm-4">
-                    <a rel = "me" href="https://github.com/programmingprincess" target = "_blank" onclick = "trackOutboundLink('https://github.com/programmingprincess'); return false;" ><i aria-hidden= "true" class="fa fa-github fa-5x wow bounceIn" data-wow-delay="0.2s"></i></a>
-                </div>
-                <div class="col-sm-4">
-                    <a rel = "me" href="http://linkedin.com/in/jiaqiwu1" target = "_blank" onclick = "trackOutboundLink('http://linkedin.com/in/jiaqiwu1'); return false;" ><i aria-hidden= "true" class="fa fa-linkedin fa-5x wow bounceIn" data-wow-delay="0.4s"></i></a>
-                </div>
-            </div>
+            <br><br><br>
             <div class="chat">
-                <h2>I'm available to chat.</h2>
+                <h2>I'm available to chat!</h2>
+            </div> <br><br>
+            <div class="row icons"> 
+                <div class="col-xs-2 col-xs-offset-2">
+                    <a rel = "me" href="http://twitter.com/thejiaqiwu" target = "_blank" onclick = "trackOutboundLink('http://twitter.com/thejiaqiwu'); return false;" ><i aria-hidden= "true" class="fa fa-twitter fa-3x wow bounceIn" data-wow-delay="0s"></i></a>
+                </div>
+                <div class="col-xs-2">
+                    <a rel = "me" href="https://github.com/programmingprincess" target = "_blank" onclick = "trackOutboundLink('https://github.com/programmingprincess'); return false;" ><i aria-hidden= "true" class="fa fa-github fa-3x wow bounceIn" data-wow-delay="0.2s"></i></a>
+                </div>
+                <div class="col-xs-2">
+                    <a rel = "me" href="http://linkedin.com/in/jiaqiwu1" target = "_blank" onclick = "trackOutboundLink('http://linkedin.com/in/jiaqiwu1'); return false;" ><i aria-hidden= "true" class="fa fa-linkedin fa-3x wow bounceIn" data-wow-delay="0.4s"></i></a>
+                </div>
+                <div class = "col-xs-2">
+                    <a rel = "me" href = "mailto:jiaqiwu@asu.edu"><i aria-hidden= "true" class="fa fa-envelope fa-3x wow bounceIn" data-wow-delay="0.6s"></i></a> 
+                </div>
             </div>
-            <div class="email">
-                <a href = "mailto:jiaqiwu@asu.edu" onclick = "ga('send', 'event', { eventCategory: 'button', eventAction: 'click', eventLabel: 'email'});"><button class="button button--aylen">Email</button></a>
-            </div>
+            <br><br><br>
         </div>
     </section>
+
 
     <footer>
         <section id = "divider">
@@ -343,9 +297,8 @@
             </div>
 
             <!--<p class = "end">Made with <i class="fa fa-heart" aria-hidden="true" style = "color: red"></i> by Jiaqi Wu</p>-->
-            <p class = "end">© 2017 Jiaqi Wu. Updated: 02/2018 <br>
+            <p class = "end">© 2018 Jiaqi Wu. Updated: 05/2018 <br>
                 jiaqiwu@asu.edu </p>
-
         </section>
 
         <script src="js/jquery-1.12.3.min.js"></script>
@@ -359,32 +312,93 @@
 </html>
 
 
-<div id="deserthacks" class="modal fade" role="dialog">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="wbcd" class="modal fade" role="dialog">
   <div class="modal-dialog">
       <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"> Desert Hacks: Arizona State's first collegiate MLH hackathon</h4>
+            <h4 class="modal-title"> WDBC Tumor Classification </h4>
           </div>
           <div class="modal-body">
-            <h4><b> 200+ attendees, 18 sponsors, 7 partners, $9k+ in prizes. </b></h4> 
-            <p>Desert Hacks was founded at Arizona State University with the goal of building a collaborative and innovative community without boundaries. In February 2017, Desert Hacks welcomed students from around the country to participate in a weekend of learning new concepts, building new projects, meeting new people, and being a part of a new, exciting experience. A majority of our attendees were beginners or students who have never attended a hackathon before. </p>
+            <h3> STP 494 Final Project </h3>
+            <p>This project classifies breast cancer tumors into two categories, benign or malignant, depending on tumor characteristics. We are using the Wisconsin Diagnostic Breast Cancer dataset obtained from <a rel = "nofollow" href = "https://www.kaggle.com/uciml/breast-cancer-wisconsin-data" target = "_blank">Kaggle</a>. 
+            </p>
 
-            <p>As a member of the marketing committee, I helped design and develop our website, and ran our social media pages (including Facebook, Snapchat, and Twitter).</p>
+            <p>Attributes include ID number, diagnosis (B = benign, M = malignant), and 30 real-valued input features. This project will focus on 11/32 attributes given in this dataset.
+            Features are computed from a digitized image of breast mass, and the data describes characteristics of the cell nuclei present in an image.</p>
 
-            <img src='https://i.imgur.com/511lk4Z.gif' title='Demo of Desert Hacks' width='' alt='Video Walkthrough' />
-            <p class = "caption">A walkthrough of Desert Hacks's home page</p>
+            <p>In total, the dataset contains 569 observations and 12 variables. We split the data into two sets to build our models: 70% training data, and 30% test data.</p> <br>
 
-            <br>
+            <h4>Data Models: </h4>
+            <p>Logistic Regression</p>
+            <p>K-Nearest Neighbors</p>
+            <p>Naive Bayes</p>
+            <p>Neural Nets</p>
 
-            <p>Additionally, I designed and developed the live website, which assisted hackers during the event. </p>
+            <h3>Conclusion: </h3>
+            <img src = "portfolio/wbdc-graph.png"> 
+            <p class = "caption">Figure: All models versus real diagnosis values (y)</p>
 
-             <img src='https://i.imgur.com/HvBHHMi.gif' title='Demo of Desert Hacks Live' width='' alt='Video Walkthrough' />
-             <p class = "caption">Schedule was updated in realtime throughout the event (with JavaScript). Sponsor APIs, prizes, hardware, and FAQs were also included in the live site.</p>
-        
+            <p>Our Naive-Bayes classifier has the highest accuracy with 95.91%, followed by kNN at 95.32% accuracy and neural nets at 94.74%. These three models all performed better than logistic regression at 92.40%. Despite their accuracy, some of these errors have a wide variance. Namely, neural nets misclassified several benign tumors as malignant, with high confidence. These outliers would be problematic in a clincial setting for obvious reasons. In future work, these models could be adjusted more, tuning parameters with a separate set of cross-validation data to improve test performance.</p>
 
-            <p><b>Skills utilized: </b> JavaScript/jQuery, HTML/CSS, PHP, social media</p>
+            <p><b>Skills utilized: </b> R, H2O</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a rel = "nofollow" href = "https://github.com/programmingprincess/breast-cancer-ml" target = "_target">
+                <button type="button" class="btn btn-default">View on GitHub <i class="fa fa-external-link" aria-hidden="true"></i></button>
+            </a>
+          </div>
+        </div>
+  </div>
+</div>
+
+<div id="studygenie" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> StudyGenie: An intelligent and collaborative web-based study platform </h4>
+          </div>
+          <div class="modal-body">
+            <h4>  <b>Accepted to ACM's <a rel = "nofollow" href = 'https://sigcse2018.sigcse.org/info/cfp.html' target='_blank'>SIGCSE 2018 Student Research Competition</a>, Baltimore, Maryland.</b></h4>
+            <h4> Funded by: FURI, Bidstrup Fellowship, ACM</h4>
+            <p>Study Genie is a web-based study tool that aims to explore the role of collaborative learning and note-taking on student performance in lower division computer science courses. Students may write their notes or code snippets in mini notecards, and then assemble them into a cheatsheet for use during an exam.
+            </p>
+            <img src='http://i.imgur.com/dyAhRkP.gif' title='Demo of study genie' width='' alt='Video Walkthrough' />
+
+            <p>All student movements are tracked (i.e., notecard clicked, cheatsheet added, copying and pasting vs. typing), allowing my team to analyze and understand how students study, and then compare these statistics with overall student performance in the course and exams. </p>
+
+            <p>This application differs from others in that it allows students to share and manipulate their notes on a smaller, topic-based scale, in the form of mini notecards. Deployed on a Windows Server using IIS and HTTP Platform Handler. </p>
+
+
+            <p>Implemented Visualizations: </p> 
+            <img src = "portfolio/studygenie-visualizations.png" width="200" alt= "website-home">
+            <p>We produced visualizations split into two categories to represent two types of data: activity and content. Activity-based visualizations (usage breakdown and calendar) reflect a student's actions and behavior while using the application; content-based visualizations (topic frequencies) build models around note content to supplement student learning experience. </p>
+
+            <p><b>Skills utilized: </b> Java, SQL, D3.js, HTML/CSS, JavaScript/jQuery, and more</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -425,30 +439,33 @@
             </div>
         </div>
     </div>
-<div id="studygenie" class="modal fade" role="dialog">
+
+    <div id="deserthacks" class="modal fade" role="dialog">
   <div class="modal-dialog">
       <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"> StudyGenie: An intelligent and collaborative web-based study platform </h4>
+            <h4 class="modal-title"> Desert Hacks: Arizona State's first collegiate MLH hackathon</h4>
           </div>
           <div class="modal-body">
-            <h4>  <b>Accepted to ACM's <a rel = "nofollow" href = 'https://sigcse2018.sigcse.org/info/cfp.html' target='_blank'>SIGCSE 2018 Student Research Competition</a>, Baltimore, Maryland.</b></h4>
-            <p>Study Genie is a web-based study tool that aims to explore the role of collaborative learning and note-taking on student performance in lower division computer science courses. Students may write their notes or code snippets in mini notecards, and then assemble them into a cheatsheet for use during an exam.
-            </p>
-            <img src='http://i.imgur.com/dyAhRkP.gif' title='Demo of study genie' width='' alt='Video Walkthrough' />
+            <h4><b> 200+ attendees, 18 sponsors, 7 partners, $9k+ in prizes. </b></h4> 
+            <p>Desert Hacks was founded at Arizona State University with the goal of building a collaborative and innovative community without boundaries. In February 2017, Desert Hacks welcomed students from around the country to participate in a weekend of learning new concepts, building new projects, meeting new people, and being a part of a new, exciting experience. A majority of our attendees were beginners or students who have never attended a hackathon before. </p>
 
-            <p>All student movements are tracked (i.e., notecard clicked, cheatsheet added, copying and pasting vs. typing), allowing my team to analyze and understand how students study, and then compare these statistics with overall student performance in the course and exams. </p>
+            <p>As a member of the marketing committee, I helped design and develop our website, and ran our social media pages (including Facebook, Snapchat, and Twitter).</p>
 
-            <p>This application differs from others in that it allows students to share and manipulate their notes on a smaller, topic-based scale, in the form of mini notecards. Deployed on a Windows Server using IIS and HTTP Platform Handler. </p>
+            <img src='https://i.imgur.com/511lk4Z.gif' title='Demo of Desert Hacks' width='' alt='Video Walkthrough' />
+            <p class = "caption">A walkthrough of Desert Hacks's home page</p>
 
+            <br>
 
-            <p>Implemented Visualizations: </p> 
-            <img src = "portfolio/studygenie-visualizations.png" width="200" alt= "website-home">
-            <p>We produced visualizations split into two categories to represent two types of data: activity and content. Activity-based visualizations (usage breakdown and calendar) reflect a student's actions and behavior while using the application; content-based visualizations (topic frequencies) build models around note content to supplement student learning experience. </p>
+            <p>Additionally, I designed and developed the live website, which assisted hackers during the event. </p>
 
-            <p><b>Skills utilized: </b> Java, SQL, D3.js, HTML/CSS, JavaScript/jQuery, and more</p>
+             <img src='https://i.imgur.com/HvBHHMi.gif' title='Demo of Desert Hacks Live' width='' alt='Video Walkthrough' />
+             <p class = "caption">Schedule was updated in realtime throughout the event (with JavaScript). Sponsor APIs, prizes, hardware, and FAQs were also included in the live site.</p>
+        
+
+            <p><b>Skills utilized: </b> JavaScript/jQuery, HTML/CSS, PHP, social media</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -456,6 +473,7 @@
         </div>
   </div>
 </div>
+
 
     <div id="furi" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -491,42 +509,6 @@
             </div>
       </div>
     </div>
-    <div id="genius" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Genius Factory Wordpress Website</h4>
-              </div>
-              <div class="modal-body">
-                <p> One of the first websites I've ever built was for Genius Factory, a local
-                    tutoring center. I built this Wordpress website using the <a rel = "nofollow" href = "https://www.elegantthemes.com/gallery/divi/" target = "_blank">Divi theme</a>.  <br></p>
-
-                <h3>Highlights:</h3>
-                <p>The home page features a full-width slider. </p>
-                <a href = "portfolio/geniusfactory.png" target = "_blank"><img src = "portfolio/geniusfactory.png" width="200" alt= "website-home"></a>
-
-                <p>Below the slider, four icons are displayed that correlate with the website's main features. An optional
-                call-to-action banner can be added above the icons and below the slider. </p>
-
-                <a href = "portfolio/geniusfactory-1.png" target = "_blank"><img src = "portfolio/geniusfactory-1.png" alt= "website-icons"></a>
-
-                <p>The about page contains a gallery of Genius Factory's core values. Below the gallery, you can find
-                more information on the center's philosophy</p>
-
-                <a href = "portfolio/geniusfactory-2.png" target = "_blank"><img src = "portfolio/geniusfactory-2.png" alt= "website-about"></a>
-                <br><br>
-
-                <p>Although some of the components I implemented remain, the current website has been modified.</p>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-      </div>
-    </div>
-
 
     <div id="gilbert" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -562,7 +544,7 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <a rel = "nofollow" href = "https://play.google.com/store/apps/details?id=com.gfandroid&hl=en" target = "_target">
-                    <button type="button" class="btn btn-default">View in Play Store <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-default">View in Play Store <i class="fa fa-external-link" aria-hidden="true"></i></button>
                 </a>
               </div>
             </div>

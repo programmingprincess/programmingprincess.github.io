@@ -1,74 +1,30 @@
 jQuery(document).ready(function($) {
-    //make navbar fixed when the top of screen hits
-    var offset = $('.navbar .nav').offset().top;
+
+    /*function isInView(elem) {
+        var top = $(window).scrollTop();
+        var bottom = top + $(window).height();
+
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+
+        return((elemBottom <= bottom) && (elemTop >= top));
+    }
+
     $(window).bind('scroll', function() {
-        if($(window).width() >= 768) {   //not mobile
-            if ($(window).scrollTop() >= offset) {
-                $('.navbar').addClass('navbar-fixed-top solid-nav');
-            } else {
-                $('.navbar').removeClass('navbar-fixed-top solid-nav');
-            }
-        } else if($(window).width() < 768) {   //mobile
-            $('.navbar').addClass('navbar-fixed-top');
-            $('.navbar').removeClass('solid-nav');
-        }
-
-        //when you hit the bottom of the page
-        if($(window).scrollTop() + $(window).height() == $(document).height()) {
-            $('.navbar').removeClass('solid-nav');
-        }
-    }); //end of scroll function
-
-    //navbar when resizing window
-    $( window ).resize(function() {
-        if($(window).width() >= 768) {   //not mobile
-            $('.menu__list').removeClass('mobile-nav');
-        } else {    //mobile
-            $('.navbar').removeClass('solid-nav');
-        }
-    });
-
-    //mobile nav stuff
-    $(".navbar-nav li a").click(function(event) {   //close when you click on link
-        $(".navbar-collapse").collapse('hide');
-    });
-
-    $(".navbar-brand").click(function(event) {   //close when you click on home link
-        $(".navbar-collapse").collapse('hide');
-    });
-
-    //close navbar when link is pressed
-    $(document).click(function(e) {
-        if (!$(e.target).is('a') && !$(e.target).hasClass('navbar-toggle')) {
-            $('.collapse').collapse('hide');
-        }
-
-        if($('.navbar-collapse').attr('aria-expanded') == 'true') {
-            $('.menu__list').addClass('mobile-nav');
+        if(isInView(document.querySelector('#type'))) {
+            visible = true;
         } else {
-            $('.menu__list').removeClass('mobile-nav');
+            visible = false;
         }
-    });
+    }); */ //end of scroll function
 
-    $('.navbar-toggle').on('click', function () {
-        $('.menu__list').addClass('mobile-nav');
-    });
+
 
     //scroll "easing" when clicked
     $(function() {
-        $('a.menu-link').bind('click', function(e) {
-            var $target = $(this);
-            var offset;
-            //this extra clause accounts for the scroll indicator that gets in the way of about navbar
-            offset = $($target.attr('href')).offset().top;
-            $('html, body').stop().animate({
-                scrollTop: offset
-            }, 1500, 'easeInOutExpo');
-            e.preventDefault();
-        });
         $('#scrolldown').bind('click', function(e) {
             $('html, body').stop().animate({
-                scrollTop: $('#about').offset().top
+                scrollTop: $('#main').offset().top
             }, 1500, 'easeInOutExpo');
             e.preventDefault();
         });
@@ -80,64 +36,151 @@ jQuery(document).ready(function($) {
         });
     });
 
-    $(window).on('scroll', function () {
-        var sections = $('section'),
-            nav = $('nav'),
-            position = $(this).scrollTop();
+    //check if mobile
+    if($(window).width() > 580) {
+        var pause = 20;
+        var speed = 8;
+        var lines = [
+        'cout <<meta/><<meta/> <span style="color:#E7D76D;">"Hello, world!"</span>;', 
+        ' <span style="color:#72CFEC;"><i>System</i></span><span style="color:#be4678;">.</span>out<span style="color:#be4678;">.</span>println(<span style="color:#FFEB62;">"Hello, world!"</span>);', 
+        'print <span style="color:#E7D76D;">"Hello, world!"</span>',
+        'console<span style="color:#72CFEC;">.log</span>(<span style="color:#E7D76D;">"Hello, world!"</span>);',
+        'cat(<span style="color:#E7D76D;">"Hello, world!"</span>)',
+        ' <span style="color:#72CFEC;">echo</span><span style="color:#E7D76D;"> \'Hello, world!\'</span>;'
+        ];
 
-        sections.each(function() {
-            var top = $(this).offset().top - nav.outerHeight(),
-                bottom = top + $(this).outerHeight();
+        var line = lines[0];
+        var cur = 0,
+        dir = 1,
+        lang = 0;
+        var s = 0;
+        setInterval(function loop() {
+        cur += dir;
+        //parser: if erasing
+        if(dir < 0) {
+            if (line[cur] == '>') {
+                while(line[cur] != '<')
+                    cur--;
+            }
+            cur += dir;
+            if (line[cur] == '>') {
+                while(line[cur] != '<')
+                    cur--;
+            }
+            cur += dir;
+            if (line[cur] == '>') {
+                while(line[cur] != '<')
+                    cur--;
+            }
+        } 
+        //parser: if typing
+        else {    
+            if (line[cur] == '<') {
+                while(line[cur] != '>')
+                    cur++; 
+            }
+        }
+        //erasing 
+        if (cur < 0) {
+          cur = 0;
+          dir = -dir;
+          lang = (++lang) % lines.length;
+          line = lines[lang];
+        }
+        //line has been typed out
+        if (cur > line.length) {
+          cur = line.length;
+          //loop until pause time is up
+          if (s++ > pause) {
+            s = 0
+            dir = -dir;
+          }
+        } 
 
-            if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                console.log("bottom!");
-                nav.find('a').removeClass('active');
-                nav.find('a[href="#contact"]').addClass("active");
-            } else if (position >= top && position <= bottom) {
-                nav.find('a').removeClass('active');
-                nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
+        document.querySelector('#type').innerHTML = line.substring(0, cur);
+        }, 500 / speed)
+
+    } 
+
+
+    /*var pause = 40;
+    var speed = 2;
+    var lines = [
+    'travel', 'ramen', 'painting', 'bojack horseman', 'golden gate bridge',
+    'book stores'
+    ];
+
+    var line = lines[0];
+    var cur = 0,
+    dir = 1,
+    lang = 0;
+    var s = 0;
+    setInterval(function loop() {
+    cur += dir;
+    //erasing 
+    if (cur < 0) {
+      cur = 0;
+      dir = -dir;
+      lang = (++lang) % lines.length;
+      line = lines[lang];
+    }
+    //line has been typed out
+    if (cur > line.length) {
+      cur = line.length;
+      //loop until pause time is up
+      if (s++ > pause) {
+        s = 0
+        dir = -dir;
+      }
+    } 
+
+    document.querySelector('#likes').innerHTML = line.substring(0, cur);
+    }, 500 / speed)*/
+
+
+   /* $('#navbar a').click(function() { 
+        $(this).siblings('.active').removeClass('active');
+        var link = $(this).text().toLowerCase();
+
+        $('#main .page').each(function() {
+            if (!$(this).hasClass(link)) {
+                $(this).hide()
+            } else {
+                $(this).show(1000);
+            }
+        });
+    });*/
+
+    $('.nav').click(function() { 
+        $(this).siblings('.active').removeClass('active');
+        var link = $(this).attr('id');
+        link = link.substring(0, link.length-7); //trim "-button" off ID value
+
+        $('#main .page').each(function() {
+            if (!$(this).hasClass(link)) {
+                $(this).fadeOut(500);
+            } else {
+                $(this).fadeIn(1000);
+                //$(this).addClass("slideInLeft").show();
+
             }
         });
     });
+    /*
+    $('#portfolio-button').click(function() { 
+        $(this).siblings('.active').removeClass('active');
+        var link = $(this).text().toLowerCase();
+        $('#about').hide();
+        $('#portfolio').fadeIn(1000);
+    });
 
-    //check if mobile
-    if($(window).width() > 580) {
-        //typewriter effect configurations
-        var str,
-            i = 0,
-            isTag,
-            text;
+    $('#portfolio-button').click(function() { 
+        $(this).siblings('.active').removeClass('active');
+        var link = $(this).text().toLowerCase();
+        $('#about').hide();
+        $('#portfolio').fadeIn(1000);
+    });*/
 
-        str = "<h3><p class ='line1'> &lt;!DOCTYPE = HTML&gt;<br>";
-        str += "&lt;html&gt;</p>";
-        str += "<p class='line3'>&lt;head&gt;</p>";
-        str += "<p class='line4'>&lt;title&gt; <span style='color:#E7E7E7;'>Welcome to my page! </span>&lt;/title&gt;";
-
-        document.getElementById('typewriter').innerHTML = "";
-
-        (function type() {
-            text = str.slice(0, ++i);
-            if (text == str) {
-                document.getElementById('typewriter').innerHTML = text + '<span class = "dash" style = "margin-left: 2px"></span></h3>';
-                return;
-            }
-            var char = text.slice(-1);
-            if( char === '&') {
-                i+=3;
-                text = str.slice(0, i);
-                document.getElementById('typewriter').innerHTML = text + '<span class = "dash"></span></h3>';
-            } else if( char == '<' ) {
-                isTag = true;
-            } else if( char == '>' ) {
-                isTag = false;
-            }
-
-            document.getElementById('typewriter').innerHTML = text + '<span class = "dash"></span></h3>';
-
-            if (isTag) return type();
-            setTimeout(type, 80);
-        }());
-    }
 
         //portfolio configurations
     $('#portfolio .buttons li').click(function() {
