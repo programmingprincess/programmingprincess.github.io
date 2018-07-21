@@ -590,13 +590,6 @@ p.end {
 	font-size: 12px;
 }
 
-@media(max-width: 767px) {
-	#contact .container {
-		margin-top: 10%;
-	}
-
-}
-
 #contact h2 {
 	font-weight: 100;
 }
@@ -617,6 +610,19 @@ footer a, a.scrolldown {
 	background: url('../img/desk.jpeg') 50% 0 fixed;
 	background-size: cover;
 	background-position: center center;
+}
+
+@media(max-width: 767px) {
+	#contact {
+		background-size: cover;
+		background: url('../img/desk.jpeg') top center fixed;
+		background-repeat: no-repeat;
+	}
+
+	#contact .container {
+		margin-top: 10%;
+	}
+
 }
 
 .icons a:hover, .icons a:focus {
