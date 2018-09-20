@@ -148,6 +148,16 @@
                     </div></a>
                 </li>
 
+                <li class="research colon">
+                    <a href = "#" data-toggle="modal" data-target="#colon">
+                    <div class="tile-overlay">
+                        <div class="tile-text">
+                            Machine Learning Methods 
+                            <h4 class="big">Clustering Colon Cancer Subtypes</h4>
+                        </div>
+                    </div></a>
+                </li>
+
                 <li class="web voiceandtone">
                     <a href = "#" data-toggle="modal" data-target = "#voiceandtone">
                     <div class="tile-overlay">
@@ -402,6 +412,40 @@
             <p>We produced visualizations split into two categories to represent two types of data: activity and content. Activity-based visualizations (usage breakdown and calendar) reflect a student's actions and behavior while using the application; content-based visualizations (topic frequencies) build models around note content to supplement student learning experience. </p>
 
             <p><b>Skills utilized: </b> Java, SQL, D3.js, HTML/CSS, JavaScript/jQuery, and more</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+  </div>
+</div>
+
+<div id="colon" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Clustering Colon Cancer Subtypes </h4>
+          </div>
+          <div class="modal-body">
+            <p>Goal: identify colon cancer subtypes by clustering gene expression data used by this paper: <a href = "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001453" target = "_blank" > https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001453</a>. 
+            </p>
+
+            <p><b>Data processing:</b></p>
+            <p>mRNA expression profiles of a large series of 443 CC and 19 non-tumoral colorectal mucosas [1]. 585 tissue samples with 54675 probes were measured. Raw data was filtered to keep the 1459 probes with highest variance of expression between samples for clustering</p>
+
+            <br><br> 
+
+            <p><b>Methods and results:</b></p>
+            <p>Gene Cluster 3.0 was used for k-means cluster analysis, with accompanying visualizations generated from Java Tree View. Hierarchical consensus clustering was performed in R. Six subtypes were identified based on gene expression data. </p>
+
+            <br><br>
+            <a href = "portfolio/colon_cancer_poster.png" target = "_blank"><img src = "portfolio/colon_cancer_poster.png" alt= "poster"></a> <br><br>
+
+
+
+            <p><b>Skills utilized: </b> R, Java Tree View, Gene Cluster 3.0</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
