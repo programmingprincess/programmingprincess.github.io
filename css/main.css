@@ -423,6 +423,36 @@ ul.buttons {
 	background-position: center;
 }
 
+#portfolio li.colon {
+	background: url(../portfolio/colon-graph.png);
+	background-size: cover;
+	background-position: center center;
+}
+
+#portfolio li.deserthacks {
+	background: url(../portfolio/dh-home.png);
+	background-size: cover;
+	background-position: center center;
+}
+
+#portfolio li.furi {
+	background: url(../portfolio/furi.jpg);
+	background-size: cover;
+	background-position: top center;
+}
+
+#portfolio li.geniusfactory {
+	background: url(../portfolio/geniusfactory.png);
+	background-size: cover;
+	background-position: top center;
+}
+
+#portfolio li.gilbert {
+	background: url(../portfolio/gilbert-home.png);
+	background-size: cover;
+	background-position: center top;
+}
+
 #portfolio li.homechef {
 	background: url(../portfolio/homechef.png);
 	background-size: cover;
@@ -435,16 +465,10 @@ ul.buttons {
 	background-position: bottom center;
 }
 
-#portfolio li.instapix {
-	background: url(../portfolio/instapix.png);
+#portfolio li.ibe {
+	background: url(../portfolio/ibe.jpg);
 	background-size: cover;
-	background-position: bottom;
-}
-
-#portfolio li.gilbert {
-	background: url(../portfolio/gilbert-home.png);
-	background-size: cover;
-	background-position: center top;
+	background-position: center center;
 }
 
 #portfolio li.igem {
@@ -453,34 +477,10 @@ ul.buttons {
 	background-position: center left;
 }
 
-#portfolio li.synberc {
-	background: url(../portfolio/synberc.jpg);
+#portfolio li.instapix {
+	background: url(../portfolio/instapix.png);
 	background-size: cover;
-	background-position: center center;
-}
-
-#portfolio li.ibe {
-	background: url(../portfolio/ibe.jpg);
-	background-size: cover;
-	background-position: center center;
-}
-
-#portfolio li.furi {
-	background: url(../portfolio/furi.jpg);
-	background-size: cover;
-	background-position: top center;
-}
-
-#portfolio li.deserthacks {
-	background: url(../portfolio/dh-home.png);
-	background-size: cover;
-	background-position: center center;
-}
-
-#portfolio li.geniusfactory {
-	background: url(../portfolio/geniusfactory.png);
-	background-size: cover;
-	background-position: top center;
+	background-position: bottom;
 }
 
 #portfolio li.studygenie {
@@ -495,6 +495,19 @@ ul.buttons {
 	background-position: center center;
 }
 
+#portfolio li.synberc {
+	background: url(../portfolio/synberc.jpg);
+	background-size: cover;
+	background-position: center center;
+}
+
+#portfolio li.tumor-origin {
+	background: url(../portfolio/mirna_rf_cm.png);
+	background-size: cover;
+	background-position: center center;
+}
+
+
 #portfolio li.voiceandtone {
 	background: url(../portfolio/voice-and-tone.png);
 	background-size: cover;
@@ -507,11 +520,7 @@ ul.buttons {
 	background-position: top center;
 }
 
-#portfolio li.colon {
-	background: url(../portfolio/colon-graph.png);
-	background-size: cover;
-	background-position: center center;
-}
+
 
 /*#portfolio .tile li {
 	background-color: rgba(220, 220, 220, 1);
