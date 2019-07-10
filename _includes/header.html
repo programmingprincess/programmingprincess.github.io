@@ -3,11 +3,11 @@
     <a href="{{ site.url }}" class="top-link">{{ site.name }}</a>
       <ul class="nav">
         <!--Change the  URL here if working on an absolute domain-->
-        <li {% if page.url == '/blog' %}class="active"{% endif %}>
-          <a href="{{ site.url }}/blog">Blog</a>
-        </li>
         <li {% if page.url == '/' %}class="active"{% endif %}>
           <a href="{{ site.url }}">About</a>
+        </li>
+        <li {% if page.url == '/blog' %}class="active"{% endif %}>
+          <a href="{{ site.url }}/blog">Blog</a>
         </li>
         <li {% if page.url contains '/projects' %}class="active"{% endif %}>
           <a href="{{ site.url }}/projects">Projects</a>
