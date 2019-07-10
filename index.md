@@ -11,7 +11,7 @@ group: "navigation"
 
 <img class="portrait" src="port.JPG">
 
-I'm a first year M.S. student at [UIUC](https://cs.illinois.edu/) with research interests in computational biology, synthetic biology, and data minig. Passionate about open-source and promoting STEM. In my free time, I enjoy painting, reading, hiking, and [eating ice cream](https://www.instagram.com/kiky.cones/). 
+I'm a first year M.S. student at [UIUC](https://cs.illinois.edu/) with research interests in computational biology, synthetic biology, and data mining. Passionate about open-source and promoting STEM. In my free time, I enjoy painting, reading, hiking, and [eating ice cream](https://www.instagram.com/kiky.cones/). 
 
 <!-- Prior to grad school, I interned at Salesforce as a Software Engineer, developing smart tools for the [Service Cloud Einstein](https://www.salesforce.com/blog/2018/07/service-cloud-einstein-bots-customer-experience.hmtl) team. I graduated from Arizona State University in 2018, where I researched in [The Haynes Lab](https://khayneslab.wordpress.com/) and the [Computing Systems & Informatics (CSI) Lab](https://sites.google.com/a/asu.edu/csi/).  -->
 
