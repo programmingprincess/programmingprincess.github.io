@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+<title>Jiaqi Wu</title>
+<meta name="author" content="Jiaqi Wu">
+<meta name="description" content="Computer science student at University of Illinois.
+">
+<meta name="keywords" content="arizona state university, university of illinois, uiuc, computational biology, bioinformatics, computer science student, developer, researcher">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jiaqi Wu">
+<meta property="og:description" content="Computer science student at University of Illinois.
+">
+<meta property="og:url" content="http://localhost:4000/2019/01/05/tcga.html">
+<meta property="og:site_name" content="">
+
+<meta property="og:image" content="lab.png">
+
+<link href="https://fonts.googleapis.com/css?family=Homemade+Apple|PT+Serif" rel="stylesheet">
+
+<!-- Webmaster Tools verfication -->
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/2019/01/05/tcga.html">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- <link rel="stylesheet" href="/css/main.css" type="text/css" />
+<link rel="stylesheet" href="http://localhost:4000/css/custom.css" type="text/css" />-->
+
+
+
+<link rel="stylesheet" href=" http://localhost:4000/css/main.css" type="text/css" />
+<link rel="stylesheet" href="http://localhost:4000/css/custom.css" type="text/css" />
+
+
+</head>
+<body>
+  <div class="header-container container">
+  <header>
+    <a href="http://localhost:4000" class="top-link">Jiaqi Wu</a>
+      <ul class="nav">
+        <!--Change the  URL here if working on an absolute domain-->
+        <li >
+          <a href="http://localhost:4000">Blog</a>
+        </li>
+        <li >
+          <a href="http://localhost:4000/about">About</a>
+        </li>
+        <li >
+          <a href="http://localhost:4000/projects">Projects</a>
+        </li>
+
+        <!-- 
+          <li><a href="https://github.com/programmingprincess" target="_blank">Projects</a></li>
+         -->
+        <!-- <li><a href="http://localhost:4000/feed.xml">RSS</a></li> -->
+      </ul>
+  </header>
+</div>
+
+  <div class="container">
+  <h1 class="post-title">Prepping TCGA data for machine learning projects</h1>
+<p class="meta">05 Jan 2019</p>
+
+<div class="post">
+<p>Last semester, I wanted to explore the role of epigenetic markers in differentiating types of cancers for a course project. I turned to The Cancer Genome Atlas’s (TCGA) <a href="https://portal.gdc.cancer.gov/">data portal</a>, which contains 7 types of genomic data for 33 types of cancer.</p>
+
+<p>Processing and organizing the data from TCGA to a form that I could use for my Tensorflow model turned out to be the most difficult part of this project, so here are the steps I followed, and resources I found helpful along the way.</p>
+
+<h2 id="1-microrna-expression-profiles">1: MicroRNA expression profiles</h2>
+
+<p>I started by reading discussions on Biostars. I was surprised by the lack of detailed documentation for handling TCGA data for beginners.</p>
+
+<h3 id="11-downloading-raw-data-with-gdc">1.1: Downloading raw data with GDC</h3>
+
+<p>I downloaded 17 datasets from <a href="https://portal.gdc.cancer.gov/">TCGA</a>, but will only focus on three in this post. TCGA has two tiers of data—free and controlled. The controlled set requires special access (you need to apply for it). So instead, I chose only the TXT files (consisting of transcriptome profiles). This sped up my processing a bit, since the controlled tier contains BAM sequencing reads of ~60-200MB.</p>
+
+<p>Once I had all my TXT files for one tissue origin site in the cart, I downloaded the GDC Manifest. Since I was downloading to a cluster, I used the <a href="https://gdc.cancer.gov/access-data/gdc-data-transfer-tool">GDC-Client</a>:</p>
+
+<p><code class="highlighter-rouge">./gdc-client download -m $MANIFEST</code></p>
+
+<p>Note: The expression profiles only give you the <code class="highlighter-rouge">miRNA_ID</code> and sequencing read information; if you want more information about the sample (i.e., metastatic, primary, or normal tissue), you have to download the Sample Sheet from TCGA as well.</p>
+
+<h3 id="12-preparing-the-data-using-r">1.2: Preparing the data using R</h3>
+
+<p>Each sample downloaded creates a new folder in your download directory, and inside the folder are two files: <code class="highlighter-rouge">*.mirbase21.mirnas.quantification.txt</code> and <code class="highlighter-rouge">*.mirbase21.isoforms.quantification.txt</code>. I will be working with miRNA isoform expression profiles.</p>
+
+<details><summary>More on miRNA isoforms</summary>
+<p>
+
+Each row in the isoforms file contains the calculated expression for each individual miRNA isoform observed, per sample. A common way to process this data is by taking the max or sum of all counts associated with a specific miRNA. If there are multiple isoforms for a given miRNA in each sample, then the expression is summed. 
+
+</p>
+</details>
+
+<p>Now, I move all the files out of their folders and into one directory. We can use <a href="https://github.com/rptashkin/TCGA_miRNASeq_matrix">rptashkin’s TCGA_miRNAseq_matrix</a> R script to obtain a complete matrix of summed miRNA isoforms from the individual samples. The rows represent miRNAs, and the columns represent samples.</p>
+
+<p>I add a row called “label” and manually label it with the corresponding cancer type (i.e., BRCA, ESCA, SKCM). Then, I repeat this process with all the cancer types (I had 17). Once I have 17 labeled matrices, I merge them in R, and transpose. Now, the final matrix has samples from all 17 cancer types, where the columns represent miRNAs, and the rows are samples. I randomize, split the label column, and import into Python for machine learning analysis.</p>
+
+<details><summary>Importing R dataframe to Python</summary>
+<p>
+
+There are several ways to do this. I wrote my R matrix to disc (in a .txt file), and then imported it into Python using Pandas. 
+<br /><br />
+After splitting my data into a train and test set, and isolating the labels columns, I converted the data frame to numpy array to use for further analysis. 
+
+</p>
+</details>
+
+<h2 id="2-dna-methylation-expression-profiles">2: DNA methylation expression profiles</h2>
+
+<p>DNA methylation was a little more complicated than miRNAs, and I could no longer use the same script to turn individual samples into one big matrix. So, I had to do some more digging.</p>
+
+<h3 id="21-downloading-tcga-data-using-tcga2stat">2.1: Downloading TCGA data using TCGA2STAT</h3>
+
+<p>I found an R package <a href="http://www.liuzlab.org/TCGA2STAT/">TCGA2STAT</a> that enables users to directly download TCGA data into an analysis-ready format, which is exactly what I was looking for.</p>
+
+<p>Because I only needed it for methylation, I extracted the code relevant to DNA methylation. The altered version is available in my <a href="https://github.com/programmingprincess/tumor-origin/blob/master/dnam/tcga2stat.R">repository</a>.</p>
+
+<p>TCGA2STAT allows you to specify the type of data you wish to download; I used Illumina 27K methylation profiles.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 27K is selected by default</span><span class="w">
+</span><span class="n">methyl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">getTCGA</span><span class="p">(</span><span class="n">disease</span><span class="o">=</span><span class="s2">"LUAD"</span><span class="p">,</span><span class="w"> </span><span class="n">data.type</span><span class="o">=</span><span class="s2">"Methylation"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 450K example—450K isn't available for every dataset. Check in TCGA before downloading </span><span class="w">
+</span><span class="c1"># methyl &lt;- getTCGA(disease="LUAD", data.type="Methylation", type="450K")</span><span class="w">
+
+</span><span class="c1"># Table of samples vs. CpG site beta-values is found in $dat </span><span class="w">
+</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">methyl</span><span class="o">$</span><span class="n">dat</span><span class="w">
+
+</span><span class="c1"># Script to see distribution of primary/metastatic/normal tissue. </span><span class="w">
+
+</span><span class="n">samples</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colnames</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
+</span><span class="n">parsed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">strsplit</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span><span class="s2">"-"</span><span class="p">)</span><span class="w">
+</span><span class="n">parsed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">parsed</span><span class="p">,</span><span class="w"> </span><span class="n">`[[`</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w">
+</span><span class="n">parsed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">unlist</span><span class="p">(</span><span class="n">parsed</span><span class="p">,</span><span class="w"> </span><span class="n">recursive</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">table</span><span class="p">(</span><span class="n">parsed</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># Replace sample names, transform, and add label.  </span><span class="w">
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gsub</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">'-'</span><span class="p">,</span><span class="w"> </span><span class="n">replacement</span><span class="o">=</span><span class="s1">'_'</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">colnames</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w">
+</span><span class="n">t_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
+</span><span class="n">t_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">t_data</span><span class="p">)</span><span class="w">
+</span><span class="n">t_data</span><span class="o">$</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="n">CODE</span><span class="p">,</span><span class="n">nrow</span><span class="p">(</span><span class="n">t_data</span><span class="p">)))</span><span class="w">
+
+</span><span class="c1"># Add row names to make sure table prints out correctly in .txt format </span><span class="w">
+</span><span class="n">t_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cbind</span><span class="p">(</span><span class="n">Row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rownames</span><span class="p">(</span><span class="n">t_data</span><span class="p">),</span><span class="w"> </span><span class="n">t_data</span><span class="p">)</span><span class="w">
+
+</span><span class="n">write.table</span><span class="p">(</span><span class="n">t_data</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"LUAD-methyl-labeled"</span><span class="p">,</span><span class="s2">".txt"</span><span class="p">),</span><span class="w"> </span><span class="n">append</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
+
+<p>The <code class="highlighter-rouge">$dat</code> attribute of the returned data structure gives us a matrix, where, again, the rows represent a CpG site and columns represent a sample. I transform the matrix, add a label for the origin site/disease type (i.e., LUAD), and store as a .txt file. This is repeated for each origin site I wanted to look at, and then all the .txt files are merged, resulting in a matrix with their labeled origin sites.</p>
+
+<h3 id="22-feature-selection-in-r">2.2: Feature selection in R</h3>
+
+<p>Since DNA methylation yields a much larger dataset, I did some feature selection before transforming the data matrix. I removed all features (CpG sites) with more than 30% “NA” values. If you want to go even further with the feature selection at this stage, you can consider filtering the matrix based on differential expression using <a href="https://stackoverflow.com/questions/17003928/r-filter-matrix-based-on-variance-cut-offs">variance cut-offs</a> or <a href="https://bioconductor.org/packages/release/bioc/html/limma.html">limma</a>. You can filter for differential expression between different origin sites, between tumor vs. normal tissue samples, etc.</p>
+
+<h2 id="3-conclusion">3: Conclusion</h2>
+
+<p>Now, we have two datasets ready to be analyzed in Python. Examples of how to build machine learning models based on the processed data are available on <a href="https://github.com/programmingprincess/tumor-origin">GitHub</a>.</p>
+
+<p>The main effort was processing TCGA data, a step that I could only find very scattered documentation for. Hope this post helps other beginners trying to work with microRNA and DNA methylation data! :)</p>
+
+<p>Here’s a list of resources I referenced for data processing:</p>
+<ul>
+  <li>Biostar: <a href="https://www.biostars.org/p/101182/">miRNAseq isoform quantification</a></li>
+  <li>R packages: <a href="http://www.liuzlab.org/TCGA2STAT/">TCGA2STAT</a>, <a href="https://bioconductor.org/packages/release/bioc/html/limma.html">Bioconductor limma</a></li>
+  <li>GitHub: <a href="https://github.com/rptashkin/TCGA_miRNASeq_matrix">rptashkin’s miRNAseq matrix script</a></li>
+  <li>Stack Overflow: feature selection based on <a href="https://stackoverflow.com/questions/17003928/r-filter-matrix-based-on-variance-cut-offs">variance cut-offs</a> in R</li>
+</ul>
+
+
+</div>
+
+
+    <div class="keep-in-touch">
+      <p>
+        Tweet me <a href="https://twitter.com/thejiaqiwu">@thejiaqiwu</a> if you like this post.
+      </p>
+    </div>
+
+
+<!-- <a href="https://twitter.com/share" class="twitter-share-button" data-via="thejiaqiwu" data-size="large" data-hashtags="Jiaqi Wu">Tweet</a>
+ 
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
+
+
+
+  
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </div><!-- /.main -->
+</body>
+</html>

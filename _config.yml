@@ -1,0 +1,49 @@
+name: Jiaqi Wu
+description: >
+    Computer science student at University of Illinois.
+about: >
+    Grad student at UIUC, doing research at the intersection of 
+    computer science and biology. 
+
+master_repo: false
+url: "http://programmingprincess.github.io/blog"
+markdown: kramdown
+highlighter: rouge
+
+plugins: ['jekyll-paginate', 'jekyll-gist', 'jekyll-feed']
+
+paginate: 4
+paginate_path: "/blog/page:num/"
+
+logo:             lab.png
+disqus_shortname:
+
+rtl: false
+owner:
+  name:           jiaqiwu
+  avatar:         "portrait.jpg"
+  email:          "jiaqiwu@asu.edu"
+  # Social networking links used in footer. Update and remove as you like.
+  twitter: thejiaqiwu
+  github: https://github.com/programmingprincess
+  #stackexchange: https://stackoverflow.com/users/859112/vinit-kumar?tab=profile
+  linkedin: https://www.linkedin.com/in/jiaqiwu1
+  # For Google Authorship https://plus.google.com/authorship
+  google_plus:
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:
+google_verify:
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
+
+navigation:
+- text: About
+  url: /about/
+  layout: default
+- text: Blog
+  url: /blog
+  layout: default
+- text: Projects
+  url: /projects/
+  layout: default

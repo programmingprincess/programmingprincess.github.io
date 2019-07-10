@@ -1,0 +1,106 @@
+/* 
+	Link hovers: #2382c8;
+
+
+*/
+
+
+/* General
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+html {
+	background-color: #fefefe;
+}
+
+header {
+    margin: 1.5em 0 0 0;
+}
+
+a.top-link,
+a.top-link:hover {
+  color: #999;
+  font-size: 60px;
+  text-decoration: none
+}
+
+ul, ol{
+	margin:0.75em 0 1.5em 3em
+}
+
+li {
+	margin: 0.5em 0;
+}
+
+.active a {
+	border-bottom: 1px solid #000;
+}
+
+*:focus {
+	outline: none;
+}
+
+summary {
+	cursor: pointer;
+}
+
+details p {
+	margin-left: 1em;
+}
+
+.award {
+	color: #B03A2E
+}
+
+p.meta {
+	margin-top: -25px;
+	margin-bottom: 35px;
+}
+
+.post-date {
+	font-size: 1em;
+	margin: 0.5em 0;
+}
+
+.post-title {
+	margin-left: 0;
+}
+
+.post-excerpt {
+	font-size: 1em;
+	color: #666;
+}
+
+.portrait{
+  border-radius:5px;
+  max-width:100%;
+  height:200px;
+  width:200px;
+  position:relative;
+  margin:-10px 0 0 15px;
+  float:right
+}
+
+.pagination .social-media-icons {
+	float: left;
+	margin: -10px 10px 10px 10px;
+}
+
+.social-footer {
+	width: 100%;
+	text-align: center;
+}
+
+.social-footer .social-media-icons {
+	float: none;
+	margin: 1em;
+	display: inline-block;
+}
+
+.social-media-icons {
+  color: #111;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-media-icons:hover {
+	color: #2382c8;
+}
