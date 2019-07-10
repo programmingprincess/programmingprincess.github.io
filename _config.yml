@@ -39,7 +39,7 @@ bing_verify:
 
 navigation:
 - text: About
-  url: /about/
+  url: /
   layout: default
 - text: Blog
   url: /blog
