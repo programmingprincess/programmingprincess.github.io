@@ -6,7 +6,7 @@ about: >
     computer science and biology. 
 
 master_repo: false
-url: "http://programmingprincess.github.io/blog"
+url: "http://programmingprincess.github.io/"
 markdown: kramdown
 highlighter: rouge
 
