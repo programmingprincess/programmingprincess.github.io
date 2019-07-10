@@ -42,7 +42,7 @@ navigation:
   url: /
   layout: default
 - text: Blog
-  url: /blog
+  url: /blog/
   layout: default
 - text: Projects
   url: /projects/
