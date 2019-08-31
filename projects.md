@@ -12,11 +12,13 @@ group: "navigation"
 Here are some of my current and past projects, arranged from most to least recent.
 
 ## Research 
-* [Primary tumor detection]() - predicting tumor origin sites from DNA methylation and microRNA expression profiles. (Machine learning: Python, Tensorflow, R). *Current*
+* [Developing a pipeline for genome analysis](https://github.com/programmingprincess/genome-analysis/) - From raw FASTA files to variant calling and copy number calling. *Current*
 
-* [Tumor malignancy classification]() - classify breast cancer tumors using digitized images of FNA biopsies from the [WDBC](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)) dataset. (Machine learning: R). *2018*
+* [Primary tumor detection](https://github.com/programmingprincess/tumor-origin) - predicting tumor origin sites from DNA methylation and microRNA expression profiles. (Machine learning: Python, Tensorflow, R). *2019*
 
-* [Study Genie]() - a web-based study tool that explores the role of collaborative learning and note-taking on student performance in computer science courses. (Data mining, data visualizations: Java, D3.js). *2018*. <span class = "award">**Accepted to ACM SIGCSE 2018.**</span>
+* [Tumor malignancy classification](https://github.com/programmingprincess/breast-cancer-ml) - classify breast cancer tumors using digitized images of FNA biopsies from the [WDBC](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)) dataset. (Machine learning: R). *2018*
+
+* [Study Genie](https://dl.acm.org/citation.cfm?id=3162340) - a web-based study tool that explores the role of collaborative learning and note-taking on student performance in computer science courses. (Data mining, data visualizations: Java, D3.js). *2018*. <span class = "award">**Accepted to ACM SIGCSE 2018.**</span>
 
 <!-- * Clustering colon cancer subtypes - identifying colon cancer subtypes by clustering [gene expression data](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001453). (Machine learning methods: R). *2016* -->
 
