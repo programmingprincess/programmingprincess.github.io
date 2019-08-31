@@ -4,11 +4,11 @@ Blog using a modified version of [White-Paper](https://github.com/vinitkumar/whi
 
 
 ## To-do
-- [ ] Underline current page
-- [ ] Project page 
+- [x] Underline current page
+- [x] Project page 
 - [ ] Footer...need copyright/date?
-- [ ] About portrait alignment
-- [ ] Nav links need color?
+- [x] About portrait alignment
+- [x] Nav links need color?
 - [ ] Title font? 
 
 

@@ -72,7 +72,7 @@
 <div class="post">
 <p>Last semester, I wanted to explore the role of epigenetic markers in differentiating types of cancers for a course project. I turned to The Cancer Genome Atlas’s (TCGA) <a href="https://portal.gdc.cancer.gov/">data portal</a>, which contains 7 types of genomic data for 33 types of cancer.</p>
 
-<p>Processing and organizing the data from TCGA to a form that I could use for my Tensorflow model turned out to be the most difficult part of this project, so here are the steps I followed, and resources I found helpful along the way.</p>
+<p>Processing and organizing the data from TCGA to a form that I could use for Tensorflow turned out to be the most difficult part of this project, so here are the steps I followed, and resources I found helpful along the way.</p>
 
 <h2 id="1-microrna-expression-profiles">1: MicroRNA expression profiles</h2>
 
@@ -80,7 +80,7 @@
 
 <h3 id="11-downloading-raw-data-with-gdc">1.1: Downloading raw data with GDC</h3>
 
-<p>I downloaded 17 datasets from <a href="https://portal.gdc.cancer.gov/">TCGA</a>, but will only focus on three in this post. TCGA has two tiers of data—free and controlled. The controlled set requires special access (you need to apply for it). So instead, I chose only the TXT files (consisting of transcriptome profiles). This sped up my processing a bit, since the controlled tier contains BAM sequencing reads of ~60-200MB.</p>
+<p>I downloaded 17 datasets from <a href="https://portal.gdc.cancer.gov/">TCGA</a>, but will only focus on three in this post. TCGA has two tiers of data: free and controlled. The controlled set requires special access (you need to apply for it). So instead, I chose only the TXT files (consisting of transcriptome profiles). This sped up my processing a bit, since the controlled tier contains BAM sequencing reads of ~60-200MB.</p>
 
 <p>Once I had all my TXT files for one tissue origin site in the cart, I downloaded the GDC Manifest. Since I was downloading to a cluster, I used the <a href="https://gdc.cancer.gov/access-data/gdc-data-transfer-tool">GDC-Client</a>:</p>
 

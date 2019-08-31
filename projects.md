@@ -14,6 +14,8 @@ Here are some of my current and past projects, arranged from most to least recen
 ## Research 
 * [Developing a pipeline for genome analysis](https://github.com/programmingprincess/genome-analysis/) - From raw FASTA files to variant calling and copy number calling. *Current*
 
+* [Visualizing clonal architecture of tumors]() *Current*
+
 * [Primary tumor detection](https://github.com/programmingprincess/tumor-origin) - predicting tumor origin sites from DNA methylation and microRNA expression profiles. (Machine learning: Python, Tensorflow, R). *2019*
 
 * [Tumor malignancy classification](https://github.com/programmingprincess/breast-cancer-ml) - classify breast cancer tumors using digitized images of FNA biopsies from the [WDBC](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)) dataset. (Machine learning: R). *2018*
@@ -25,9 +27,9 @@ Here are some of my current and past projects, arranged from most to least recen
 * Cell-cell communication systems for genetic circuitry - characterizing crosstalk in diverse homoserine lactone signaling systems in bacteria. (Wet lab: cloning, primer design; data analysis). *2017*. <span class = "award">**Gold medal, 2 awards, 2 nominations at [iGEM 2016](https://asunow.asu.edu/20161206-asu-puts-impressive-performance-igem); published in [PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202294) 2018;**</span>
 
 ## Web 
-* Personal Website ([demo]()) - version 1 of personal website with a heavier design-focus, using Bootstrap. Compatible across desktop, laptop, tablet, and mobile. *2018*
+* Personal Website ([demo](http://jiaqiwu.com/v2)) - version 1 of personal website with a heavier design-focus, using Bootstrap. Compatible across desktop, laptop, tablet, and mobile. *2018*
 
-* [Perfect Fit](https://github.com/programmingprincess/perfect-fit/) - a web extension that updates your clothing size for different shopping websites. *2018*. <span class = "award">**Judge's Pick at CodeAda 2018, University of Illinois!**</span>
+* [Perfect Fit](https://github.com/programmingprincess/perfect-fit/) - a Firefox web extension that updates your clothing size for different shopping websites. *2018*. <span class = "award">**Judge's Pick at CodeAda 2018, University of Illinois!**</span>
 
 * Voice and tone guide - a Wordpress theme that helps clients develop better content by displaying short, helpful brand tips. *2017* 
 
