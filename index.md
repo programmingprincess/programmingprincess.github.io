@@ -9,7 +9,7 @@ group: "navigation"
 
 {{site.about}} -->
 
-<img class="portrait" src="port.JPG">
+<img class="portrait" src="portrait_2019.jpeg">
 
 I'm a second year M.S. student at [UIUC](https://cs.illinois.edu/) with research interests in computational biology, synthetic biology, and data mining. Passionate about open-source and promoting STEM. In my free time, I enjoy painting, reading, hiking, and [eating ice cream](https://www.instagram.com/kiky.cones/). 
 
