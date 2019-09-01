@@ -14,7 +14,7 @@ Here are some of my current and past projects, arranged from most to least recen
 ## Research 
 * [Developing a pipeline for genome analysis](https://github.com/programmingprincess/genome-analysis/) - From raw FASTA files to variant calling and copy number calling. *Current*
 
-* [Visualizing clonal architecture of tumors]() *Current*
+<!-- * [Visualizing clonal architecture of tumors]() *Current* -->
 
 * [Primary tumor detection](https://github.com/programmingprincess/tumor-origin) - predicting tumor origin sites from DNA methylation and microRNA expression profiles. (Machine learning: Python, Tensorflow, R). *2019*
 
