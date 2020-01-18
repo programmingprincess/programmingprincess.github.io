@@ -14,7 +14,10 @@ Here are some of my current and past projects, arranged from most to least recen
 ## Research 
 * [Developing a pipeline for genome analysis](https://github.com/programmingprincess/genome-analysis/) - From raw FASTA files to variant calling and copy number calling. *Current*
 
-<!-- * [Visualizing clonal architecture of tumors]() *Current* -->
+<!-- * [Visualizing clonal architecture of tumors](https://github.com/elkebir-group/ClonArch) *Current*
+ -->
+* [Tasty-search: Search engine feedback interface for difficult queries](https://github.com/programmingprincess/tasty-search) – a search engine designed to collect and incorporate explicit user feedback into supervised learning-to-rank algorithms *2019*
+
 
 * [Primary tumor detection](https://github.com/programmingprincess/tumor-origin) - predicting tumor origin sites from DNA methylation and microRNA expression profiles. (Machine learning: Python, Tensorflow, R). *2019*
 
@@ -34,6 +37,8 @@ Here are some of my current and past projects, arranged from most to least recen
 * Voice and tone guide - a Wordpress theme that helps clients develop better content by displaying short, helpful brand tips. *2017* 
 
 * [Burger Builder](https://github.com/programmingprincess/burgerbuilder/) ([demo](http://jiaqiwu.com/burgerbuilder/)) - developed at [SWHacks 2017](https://swhacks.org/), Burger Builder is an intuitive and simple web application where you can craft the burger of your dreams! (jQuery, HTML/CSS). *2017*
+
+* See more miscellaneous web projects on my [GitHub](http://github.com/programmingprincess)
 
 <!-- * [Sun Devil Dice](https://github.com/programmingprincess/team21) - a Java Applet developed for introductory software engineering course at ASU. *2016* -->
 

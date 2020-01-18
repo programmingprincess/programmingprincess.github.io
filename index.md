@@ -17,7 +17,7 @@ I'm a second year M.S. student at [UIUC](https://cs.illinois.edu/) with research
 
 <!-- <i class="fa fa-book fa-1x right-padding" aria-hidden="true"></i>
  -->
-Recent Favorite: [Bad Blood](https://www.goodreads.com/review/list/11107091?shelf=currently-reading) by John Carreyrou
+Recent Favorite: [Murder on the Orient Express](https://www.goodreads.com/review/list/11107091?shelf=currently-reading) by Agatha Christie
 
 ## Updates 
 * May '19: I joined Facebook as a software engineering intern on their Pages Ranking team in Seattle.
