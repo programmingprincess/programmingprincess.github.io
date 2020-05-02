@@ -45,7 +45,6 @@ jQuery(document).ready(function($) {
         ' <span style="color:#72CFEC;"><i>System</i></span><span style="color:#be4678;">.</span>out<span style="color:#be4678;">.</span>println(<span style="color:#FFEB62;">"Hello, world!"</span>);', 
         'print <span style="color:#E7D76D;">"Hello, world!"</span>',
         'console<span style="color:#72CFEC;">.log</span>(<span style="color:#E7D76D;">"Hello, world!"</span>);',
-        'cat(<span style="color:#E7D76D;">"Hello, world!"</span>)',
         ' <span style="color:#72CFEC;">echo</span><span style="color:#E7D76D;"> \'Hello, world!\'</span>;'
         ];
 

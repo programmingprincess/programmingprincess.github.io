@@ -1,5 +1,197 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-01T16:09:26-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiaqi Wu</title><subtitle>Computer science student at University of Illinois.
-</subtitle><entry><title type="html">Prepping TCGA data for machine learning projects</title><link href="http://localhost:4000/2019/01/05/tcga.html" rel="alternate" type="text/html" title="Prepping TCGA data for machine learning projects" /><published>2019-01-05T00:00:00-06:00</published><updated>2019-01-05T00:00:00-06:00</updated><id>http://localhost:4000/2019/01/05/tcga</id><content type="html" xml:base="http://localhost:4000/2019/01/05/tcga.html">&lt;p&gt;Last semester, I wanted to explore the role of epigenetic markers in differentiating types of cancers for a course project. I turned to The Cancer Genome Atlas’s (TCGA) &lt;a href=&quot;https://portal.gdc.cancer.gov/&quot;&gt;data portal&lt;/a&gt;, which contains 7 types of genomic data for 33 types of cancer.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T00:52:13-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiaqi Wu</title><subtitle>Computer science student at University of Illinois.
+</subtitle><entry><title type="html">TCGA Data Parsing</title><link href="http://localhost:4000/2020/02/13/tcga-prep.html" rel="alternate" type="text/html" title="TCGA Data Parsing" /><published>2020-02-13T00:00:00-07:00</published><updated>2020-02-13T00:00:00-07:00</updated><id>http://localhost:4000/2020/02/13/tcga-prep</id><content type="html" xml:base="http://localhost:4000/2020/02/13/tcga-prep.html">&lt;h2 id=&quot;download-reference-file-gdc-uses-grch38-the-exact-file-is-provided-on-their-site&quot;&gt;Download reference file (GDC uses GRCh38; the exact file is provided on their site)&lt;/h2&gt;
+
+&lt;p&gt;https://gdc.cancer.gov/about-data/data-harmonization-and-generation/gdc-reference-files&lt;/p&gt;
+
+&lt;h2 id=&quot;go-over-basics-like-query-relevance-score-etc&quot;&gt;go over basics like query, relevance score, etc&lt;/h2&gt;
+&lt;h2 id=&quot;components-of-an-academic-paper&quot;&gt;components of an academic paper&lt;/h2&gt;
+
+&lt;h2 id=&quot;go-over-the-different-types-of-search-algorithms&quot;&gt;go over the different types of search algorithms&lt;/h2&gt;
+
+&lt;h2 id=&quot;what-are-learning-to-rank-algorithms-some-github-repositories-for-them-lambdarank&quot;&gt;what are learning to rank algorithms, some github repositories for them (LambdaRANK)&lt;/h2&gt;
+
+&lt;h2 id=&quot;evaluation-metrics-ndcg&quot;&gt;evaluation metrics NDCG&lt;/h2&gt;
+
+&lt;details&gt;&lt;summary&gt;More on miRNA isoforms&lt;/summary&gt;
+&lt;p&gt;
+
+Each row in the isoforms file contains the calculated expression for each individual miRNA isoform observed, per sample. A common way to process this data is by taking the max or sum of all counts associated with a specific miRNA. If there are multiple isoforms for a given miRNA in each sample, then the expression is summed. 
+
+&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&quot;2-dna-methylation-expression-profiles&quot;&gt;2: DNA methylation expression profiles&lt;/h2&gt;
+
+&lt;p&gt;DNA methylation was a little more complicated than miRNAs, and I could no longer use the same script to turn individual samples into one big matrix. So, I had to do some more digging.&lt;/p&gt;
+
+&lt;h3 id=&quot;21-downloading-tcga-data-using-tcga2stat&quot;&gt;2.1: Downloading TCGA data using TCGA2STAT&lt;/h3&gt;
+
+&lt;p&gt;I found an R package &lt;a href=&quot;http://www.liuzlab.org/TCGA2STAT/&quot;&gt;TCGA2STAT&lt;/a&gt; that enables users to directly download TCGA data into an analysis-ready format, which is exactly what I was looking for.&lt;/p&gt;
+
+&lt;p&gt;Because I only needed it for methylation, I extracted the code relevant to DNA methylation. The altered version is available in my &lt;a href=&quot;https://github.com/programmingprincess/tumor-origin/blob/master/dnam/tcga2stat.R&quot;&gt;repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;TCGA2STAT allows you to specify the type of data you wish to download; I used Illumina 27K methylation profiles.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# 27K is selected by default&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methyl&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getTCGA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;disease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;LUAD&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data.type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Methylation&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# 450K example—450K isn't available for every dataset. Check in TCGA before downloading &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# methyl &amp;lt;- getTCGA(disease=&quot;LUAD&quot;, data.type=&quot;Methylation&quot;, type=&quot;450K&quot;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Table of samples vs. CpG site beta-values is found in $dat &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methyl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dat&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Script to see distribution of primary/metastatic/normal tissue. &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strsplit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lapply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;`[[`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recursive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Replace sample names, transform, and add label.  &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replacement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'_'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;as.data.frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CODE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nrow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Add row names to make sure table prints out correctly in .txt format &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cbind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Row.names&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rownames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write.table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paste0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;LUAD-methyl-labeled&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sep&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;\t&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row.names&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col.names&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;$dat&lt;/code&gt; attribute of the returned data structure gives us a matrix, where, again, the rows represent a CpG site and columns represent a sample. I transform the matrix, add a label for the origin site/disease type (i.e., LUAD), and store as a .txt file. This is repeated for each origin site I wanted to look at, and then all the .txt files are merged, resulting in a matrix with their labeled origin sites.&lt;/p&gt;
+
+&lt;h3 id=&quot;22-feature-selection-in-r&quot;&gt;2.2: Feature selection in R&lt;/h3&gt;
+
+&lt;p&gt;Since DNA methylation yields a much larger dataset, I did some feature selection before transforming the data matrix. I removed all features (CpG sites) with more than 30% “NA” values. If you want to go even further with the feature selection at this stage, you can consider filtering the matrix based on differential expression using &lt;a href=&quot;https://stackoverflow.com/questions/17003928/r-filter-matrix-based-on-variance-cut-offs&quot;&gt;variance cut-offs&lt;/a&gt; or &lt;a href=&quot;https://bioconductor.org/packages/release/bioc/html/limma.html&quot;&gt;limma&lt;/a&gt;. You can filter for differential expression between different origin sites, between tumor vs. normal tissue samples, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-conclusion&quot;&gt;3: Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Now, we have two datasets ready to be analyzed in Python. Examples of how to build machine learning models based on the processed data are available on &lt;a href=&quot;https://github.com/programmingprincess/tumor-origin&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The main effort was processing TCGA data, a step that I could only find very scattered documentation for. Hope this post helps other beginners trying to work with microRNA and DNA methylation data! :)&lt;/p&gt;
+
+&lt;p&gt;Here’s a list of resources I referenced for data processing:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Biostar: &lt;a href=&quot;https://www.biostars.org/p/101182/&quot;&gt;miRNAseq isoform quantification&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;R packages: &lt;a href=&quot;http://www.liuzlab.org/TCGA2STAT/&quot;&gt;TCGA2STAT&lt;/a&gt;, &lt;a href=&quot;https://bioconductor.org/packages/release/bioc/html/limma.html&quot;&gt;Bioconductor limma&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;GitHub: &lt;a href=&quot;https://github.com/rptashkin/TCGA_miRNASeq_matrix&quot;&gt;rptashkin’s miRNAseq matrix script&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Stack Overflow: feature selection based on &lt;a href=&quot;https://stackoverflow.com/questions/17003928/r-filter-matrix-based-on-variance-cut-offs&quot;&gt;variance cut-offs&lt;/a&gt; in R&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="learning to rank" /><category term="text" /><category term="data mining" /><category term="search engines" /><category term="supervised learning" /><summary type="html">Download reference file (GDC uses GRCh38; the exact file is provided on their site)</summary></entry><entry><title type="html">How to build an academic search engine</title><link href="http://localhost:4000/2020/01/17/ltr.html" rel="alternate" type="text/html" title="How to build an academic search engine" /><published>2020-01-17T00:00:00-07:00</published><updated>2020-01-17T00:00:00-07:00</updated><id>http://localhost:4000/2020/01/17/ltr</id><content type="html" xml:base="http://localhost:4000/2020/01/17/ltr.html">&lt;p&gt;In a text mining course, we were tasked with building a search engine and competing with the class to obtain the most relevant search results given a specific query.&lt;/p&gt;
+
+&lt;p&gt;Most of us had no idea where to start.&lt;/p&gt;
+
+&lt;p&gt;But, it turns out, we can decompose this problem into a simple supervised learning problem, and use a series of published “learning-to-rank” algorithms to help.&lt;/p&gt;
+
+&lt;h2 id=&quot;input&quot;&gt;Input&lt;/h2&gt;
+
+&lt;p&gt;We need three things:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Queries&lt;/li&gt;
+  &lt;li&gt;Documents&lt;/li&gt;
+  &lt;li&gt;Query-document relevance score&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here’s an example of what the queries look like:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{u'0': [u'information', u'retrieval'],
+ u'1': [u'autoencoder'],
+ u'10': [u'category', u'theory'],
+ u'11': [u'smart', u'thermostat'],
+ u'12': [u'spatial', u'multi', u'agent', u'systems'],
+ u'13': [u'3', u'axis', u'gantry'],
+ u'14': [u'cryptography'],
+ u'15': [u'parametric', u'max', u'flow'],
+ u'16': [u'graph', u'drawing'],
+ u'17': [u'duality'],
+ u'18': [u'fdir'],
+ u'19': [u'personality', u'trait'],
+ u'2': [u'sentiment', u'analysis'],
+ u'3': [u'audio', u'visual', u'fusion'],
+ u'4': [u'object', u'detection'],
+ u'5': [u'gfdm'],
+ u'6': [u'information', u'geometry'],
+ u'7': [u'augmented', u'reality'],
+ u'8': [u'prolog'],
+ u'9': [u'wifi', u'malware']}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;go-over-basics-like-query-relevance-score-etc&quot;&gt;go over basics like query, relevance score, etc&lt;/h2&gt;
+&lt;h2 id=&quot;components-of-an-academic-paper&quot;&gt;components of an academic paper&lt;/h2&gt;
+
+&lt;h2 id=&quot;go-over-the-different-types-of-search-algorithms&quot;&gt;go over the different types of search algorithms&lt;/h2&gt;
+
+&lt;h2 id=&quot;what-are-learning-to-rank-algorithms-some-github-repositories-for-them-lambdarank&quot;&gt;what are learning to rank algorithms, some github repositories for them (LambdaRANK)&lt;/h2&gt;
+
+&lt;h2 id=&quot;evaluation-metrics-ndcg&quot;&gt;evaluation metrics NDCG&lt;/h2&gt;
+
+&lt;details&gt;&lt;summary&gt;More on miRNA isoforms&lt;/summary&gt;
+&lt;p&gt;
+
+Each row in the isoforms file contains the calculated expression for each individual miRNA isoform observed, per sample. A common way to process this data is by taking the max or sum of all counts associated with a specific miRNA. If there are multiple isoforms for a given miRNA in each sample, then the expression is summed. 
+
+&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&quot;2-dna-methylation-expression-profiles&quot;&gt;2: DNA methylation expression profiles&lt;/h2&gt;
+
+&lt;p&gt;DNA methylation was a little more complicated than miRNAs, and I could no longer use the same script to turn individual samples into one big matrix. So, I had to do some more digging.&lt;/p&gt;
+
+&lt;h3 id=&quot;21-downloading-tcga-data-using-tcga2stat&quot;&gt;2.1: Downloading TCGA data using TCGA2STAT&lt;/h3&gt;
+
+&lt;p&gt;I found an R package &lt;a href=&quot;http://www.liuzlab.org/TCGA2STAT/&quot;&gt;TCGA2STAT&lt;/a&gt; that enables users to directly download TCGA data into an analysis-ready format, which is exactly what I was looking for.&lt;/p&gt;
+
+&lt;p&gt;Because I only needed it for methylation, I extracted the code relevant to DNA methylation. The altered version is available in my &lt;a href=&quot;https://github.com/programmingprincess/tumor-origin/blob/master/dnam/tcga2stat.R&quot;&gt;repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;TCGA2STAT allows you to specify the type of data you wish to download; I used Illumina 27K methylation profiles.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# 27K is selected by default&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methyl&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getTCGA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;disease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;LUAD&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data.type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Methylation&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# 450K example—450K isn't available for every dataset. Check in TCGA before downloading &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# methyl &amp;lt;- getTCGA(disease=&quot;LUAD&quot;, data.type=&quot;Methylation&quot;, type=&quot;450K&quot;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Table of samples vs. CpG site beta-values is found in $dat &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methyl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dat&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Script to see distribution of primary/metastatic/normal tissue. &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strsplit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lapply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;`[[`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recursive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Replace sample names, transform, and add label.  &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replacement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'_'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;as.data.frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CODE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nrow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Add row names to make sure table prints out correctly in .txt format &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cbind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Row.names&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rownames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write.table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paste0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;LUAD-methyl-labeled&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sep&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;\t&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row.names&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col.names&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;$dat&lt;/code&gt; attribute of the returned data structure gives us a matrix, where, again, the rows represent a CpG site and columns represent a sample. I transform the matrix, add a label for the origin site/disease type (i.e., LUAD), and store as a .txt file. This is repeated for each origin site I wanted to look at, and then all the .txt files are merged, resulting in a matrix with their labeled origin sites.&lt;/p&gt;
+
+&lt;h3 id=&quot;22-feature-selection-in-r&quot;&gt;2.2: Feature selection in R&lt;/h3&gt;
+
+&lt;p&gt;Since DNA methylation yields a much larger dataset, I did some feature selection before transforming the data matrix. I removed all features (CpG sites) with more than 30% “NA” values. If you want to go even further with the feature selection at this stage, you can consider filtering the matrix based on differential expression using &lt;a href=&quot;https://stackoverflow.com/questions/17003928/r-filter-matrix-based-on-variance-cut-offs&quot;&gt;variance cut-offs&lt;/a&gt; or &lt;a href=&quot;https://bioconductor.org/packages/release/bioc/html/limma.html&quot;&gt;limma&lt;/a&gt;. You can filter for differential expression between different origin sites, between tumor vs. normal tissue samples, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-conclusion&quot;&gt;3: Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Now, we have two datasets ready to be analyzed in Python. Examples of how to build machine learning models based on the processed data are available on &lt;a href=&quot;https://github.com/programmingprincess/tumor-origin&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The main effort was processing TCGA data, a step that I could only find very scattered documentation for. Hope this post helps other beginners trying to work with microRNA and DNA methylation data! :)&lt;/p&gt;
+
+&lt;p&gt;Here’s a list of resources I referenced for data processing:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Biostar: &lt;a href=&quot;https://www.biostars.org/p/101182/&quot;&gt;miRNAseq isoform quantification&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;R packages: &lt;a href=&quot;http://www.liuzlab.org/TCGA2STAT/&quot;&gt;TCGA2STAT&lt;/a&gt;, &lt;a href=&quot;https://bioconductor.org/packages/release/bioc/html/limma.html&quot;&gt;Bioconductor limma&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;GitHub: &lt;a href=&quot;https://github.com/rptashkin/TCGA_miRNASeq_matrix&quot;&gt;rptashkin’s miRNAseq matrix script&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Stack Overflow: feature selection based on &lt;a href=&quot;https://stackoverflow.com/questions/17003928/r-filter-matrix-based-on-variance-cut-offs&quot;&gt;variance cut-offs&lt;/a&gt; in R&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="learning to rank" /><category term="text" /><category term="data mining" /><category term="search engines" /><category term="supervised learning" /><summary type="html">In a text mining course, we were tasked with building a search engine and competing with the class to obtain the most relevant search results given a specific query.</summary></entry><entry><title type="html">Prepping TCGA data for machine learning projects</title><link href="http://localhost:4000/2019/01/05/tcga.html" rel="alternate" type="text/html" title="Prepping TCGA data for machine learning projects" /><published>2019-01-05T00:00:00-07:00</published><updated>2019-01-05T00:00:00-07:00</updated><id>http://localhost:4000/2019/01/05/tcga</id><content type="html" xml:base="http://localhost:4000/2019/01/05/tcga.html">&lt;p&gt;Last semester, I wanted to explore the role of epigenetic markers in differentiating types of cancers for a course project. I turned to The Cancer Genome Atlas’s (TCGA) &lt;a href=&quot;https://portal.gdc.cancer.gov/&quot;&gt;data portal&lt;/a&gt;, which contains 7 types of genomic data for 33 types of cancer.&lt;/p&gt;
 
 &lt;p&gt;Processing and organizing the data from TCGA to a form that I could use for Tensorflow turned out to be the most difficult part of this project, so here are the steps I followed, and resources I found helpful along the way.&lt;/p&gt;
 

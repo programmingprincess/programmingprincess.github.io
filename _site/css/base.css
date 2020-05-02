@@ -52,14 +52,14 @@ p {
 a.top-link {
   color: black;
   margin-top: 40px;
-  font-size: 60px;
+  font-size: 40px;
   text-decoration: none;
 }
 
 a.top-link:hover {
   margin-top: 40px;
   color: black;
-  font-size: 60px;
+  font-size: 40px;
   text-decoration: none;
 }
 

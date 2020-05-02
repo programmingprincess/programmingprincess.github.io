@@ -19,7 +19,7 @@ header {
 a.top-link,
 a.top-link:hover {
   color: #999;
-  font-size: 60px;
+  font-size: 25px;
   text-decoration: none
 }
 
@@ -33,6 +33,10 @@ li {
 
 .active a {
 	border-bottom: 1px solid #000;
+}
+
+.center {
+	text-align: center;
 }
 
 *:focus {
