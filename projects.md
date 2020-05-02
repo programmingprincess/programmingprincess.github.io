@@ -8,10 +8,9 @@ group: "navigation"
 ![user-avatar]({{ site.owner.avatar }})
 
 {{site.about}} -->
-Some of my current and past projects, arranged from most to least recent.
+My research projects span bioinformatics, data mining, and machine learning, and use mostly python, bash, and sometimes R. My web projects are mostly full-stack, built with JavaScript and occasionally Flask. 
 
-My research projects span bioinformatics, data mining, and machine learning, and use mostly python, bash, and sometimes R. My web projects are mostly full-stack, built with JavaScript and occasionally Flask. Open source projects are linked to GitHub. 
-
+Some of my current and past projects, arranged from most to least recent. Open source projects are linked to GitHub. 
 
 <!-- <div class="center">
 <a href="#research">Research</a> | <a href="#web">Web</a> | <a href="#app">App</a> </div>
@@ -43,7 +42,7 @@ My research projects span bioinformatics, data mining, and machine learning, and
 
 <!-- * [Machine learning] [Tumor malignancy classification](https://github.com/programmingprincess/breast-cancer-ml) - classify breast cancer tumors using digitized images of FNA biopsies from the [WDBC](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)) dataset. (R). *2018* -->
 
-* [Study Genie](https://dl.acm.org/citation.cfm?id=3162340) – a web-based study tool that explores the role of collaborative learning and note-taking on student performance in computer science courses. <br> <span class = "award">ACM SIGCSE 2018.</span>
+* Study Genie ([abstract](https://dl.acm.org/citation.cfm?id=3162340)) – a web-based study tool that explores the role of collaborative learning and note-taking on student performance in computer science courses. <br> <span class = "award">ACM SIGCSE 2018.</span>
 
 <!-- Proceedings of the 49th ACM Technical Symposium on Computer Science Education -->
 
