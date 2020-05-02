@@ -11,10 +11,7 @@ group: "navigation"
 
 <img class="portrait" src="portrait_2019.jpeg">
 
-I'm a second year M.S. student at [UIUC](https://cs.illinois.edu/). My research focuses on cancer genomics, which analyzes the difference in gene expression between tumor and normal cells. 
-
-During my masters, I have leveraged these differences to visualize the spatial heterogeneity of a tumor, and investigate mechanisms shaping intra-tumor heterogeneity, such as immunoediting. 
-
+I'm a second year M.S. student in computer science at [UIUC](https://cs.illinois.edu/). My research focuses on extracting patterns of somatic mutations in tumors, in order to better understand cancer evolution spatially and temporally. 
 
 Outside of research, I am passionate about open-source and promoting inclusivity in STEM. I enjoy painting, hiking, and [eating ice cream](https://www.instagram.com/kiky.cones/). 
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T00:52:13-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiaqi Wu</title><subtitle>Computer science student at University of Illinois.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T01:29:13-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiaqi Wu</title><subtitle>Computer science student at University of Illinois.
 </subtitle><entry><title type="html">TCGA Data Parsing</title><link href="http://localhost:4000/2020/02/13/tcga-prep.html" rel="alternate" type="text/html" title="TCGA Data Parsing" /><published>2020-02-13T00:00:00-07:00</published><updated>2020-02-13T00:00:00-07:00</updated><id>http://localhost:4000/2020/02/13/tcga-prep</id><content type="html" xml:base="http://localhost:4000/2020/02/13/tcga-prep.html">&lt;h2 id=&quot;download-reference-file-gdc-uses-grch38-the-exact-file-is-provided-on-their-site&quot;&gt;Download reference file (GDC uses GRCh38; the exact file is provided on their site)&lt;/h2&gt;
 
 &lt;p&gt;https://gdc.cancer.gov/about-data/data-harmonization-and-generation/gdc-reference-files&lt;/p&gt;
@@ -94,26 +94,26 @@ Each row in the isoforms file contains the calculated expression for each indivi
 &lt;/ul&gt;
 
 &lt;p&gt;Here’s an example of what the queries look like:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{u'0': [u'information', u'retrieval'],
- u'1': [u'autoencoder'],
- u'10': [u'category', u'theory'],
- u'11': [u'smart', u'thermostat'],
- u'12': [u'spatial', u'multi', u'agent', u'systems'],
- u'13': [u'3', u'axis', u'gantry'],
- u'14': [u'cryptography'],
- u'15': [u'parametric', u'max', u'flow'],
- u'16': [u'graph', u'drawing'],
- u'17': [u'duality'],
- u'18': [u'fdir'],
- u'19': [u'personality', u'trait'],
- u'2': [u'sentiment', u'analysis'],
- u'3': [u'audio', u'visual', u'fusion'],
- u'4': [u'object', u'detection'],
- u'5': [u'gfdm'],
- u'6': [u'information', u'geometry'],
- u'7': [u'augmented', u'reality'],
- u'8': [u'prolog'],
- u'9': [u'wifi', u'malware']}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{'0': ['information', 'retrieval'],
+ '1': ['autoencoder'],
+ '10': ['category', 'theory'],
+ '11': ['smart', 'thermostat'],
+ '12': ['spatial', 'multi', 'agent', 'systems'],
+ '13': ['3', 'axis', 'gantry'],
+ '14': ['cryptography'],
+ '15': ['parametric', 'max', 'flow'],
+ '16': ['graph', 'drawing'],
+ '17': ['duality'],
+ '18': ['fdir'],
+ '19': ['personality', 'trait'],
+ '2': ['sentiment', 'analysis'],
+ '3': ['audio', 'visual', 'fusion'],
+ '4': ['object', 'detection'],
+ '5': ['gfdm'],
+ '6': ['information', 'geometry'],
+ '7': ['augmented', 'reality'],
+ '8': ['prolog'],
+ '9': ['wifi', 'malware']}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;go-over-basics-like-query-relevance-score-etc&quot;&gt;go over basics like query, relevance score, etc&lt;/h2&gt;

@@ -34,7 +34,7 @@ My research projects span bioinformatics, data mining, and machine learning, and
 * [Developing a pipeline for cancer genome analysis](https://github.com/programmingprincess/genome-analysis/) – following GATK best practices for alignment of raw FASTA files, SNV calling, somatic CNA calling, and retrieving mutational signatures. 2019.
 
 <!-- a study on the effectiveness of weakly- and distantly-supervised methods for  -->
-* Weakly-supervised classification of GitHub repositories – automated labeling of GitHub repositories using raw readmes, code files, and additional metadata. 2019. 
+* Weakly-supervised classification of GitHub repositories ([slides](https://docs.google.com/presentation/d/1LR6B-no1Ox3bLOKMEgaYAmgYcpPWbhbePZvsT7RUgUY/edit?usp=sharing)) – automated labeling of GitHub repositories using raw readmes, code files, and additional metadata. 2019. 
 
 <!-- * [Computer Vision] <br>
 [Data augmentation of biased datasets with StyleGAN](https://github.com/programmingprincess/stylegan). 2019. <br> <span class = "award">**Accepted to SDSC20.**</span>  -->
