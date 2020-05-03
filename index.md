@@ -22,7 +22,7 @@ Outside of research, I am passionate about open-source and promoting inclusivity
 
 <!-- <i class="fa fa-book fa-1x right-padding" aria-hidden="true"></i>
  -->
-<i class="fas fa-book"></i> Recent Favorite: [Murder on the Orient Express](https://www.goodreads.com/review/list/11107091?shelf=currently-reading) by Agatha Christie
+<i class="fa fa-book"></i> Recent Favorite: [Murder on the Orient Express](https://www.goodreads.com/review/list/11107091?shelf=currently-reading) by Agatha Christie
 
 ## Updates 
 * April '20: Our paper on visualizing the spatial clonal architecture in tumors was accepted to ISMB 2020. 
