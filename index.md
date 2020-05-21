@@ -11,17 +11,13 @@ group: "navigation"
 
 <img class="portrait" src="portrait_2019.jpeg">
 
-I'm a second year M.S. student in computer science at [UIUC](https://cs.illinois.edu/). My research focuses on extracting patterns of somatic mutations in tumors, in order to better understand cancer evolution spatially and temporally. 
+I'm a second year M.S. student in computer science at [UIUC](https://cs.illinois.edu/). My research focuses on interpreting patterns of somatic mutations in tumors, in order to better understand cancer evolution spatially and temporally. 
 
 Outside of research, I am passionate about open-source and promoting inclusivity in STEM. I enjoy painting, hiking, and [eating ice cream](https://www.instagram.com/kiky.cones/). 
 
 <!-- 
- with research interests in cancer genomics, genomic visualizations, and synthetic biology. 
-
  Prior to grad school, I interned at Salesforce as a Software Engineer, developing smart tools for the [Service Cloud Einstein](https://www.salesforce.com/blog/2018/07/service-cloud-einstein-bots-customer-experience.hmtl) team. I graduated from Arizona State University in 2018, where I researched in [The Haynes Lab](https://khayneslab.wordpress.com/) and the [Computing Systems & Informatics (CSI) Lab](https://sites.google.com/a/asu.edu/csi/).  -->
 
-<!-- <i class="fa fa-book fa-1x right-padding" aria-hidden="true"></i>
- -->
 <i class="fa fa-book"></i> Recent Favorite: [Murder on the Orient Express](https://www.goodreads.com/review/list/11107091?shelf=currently-reading) by Agatha Christie
 
 ## Updates 
@@ -43,7 +39,7 @@ Outside of research, I am passionate about open-source and promoting inclusivity
     <a href="mailto:{{ site.owner.email }}" class="social-media-icons"><i class="fa fa-2x fa-envelope-square" aria-hidden="true"></i></a>
   {% endif %}
   {% if site.owner.twitter %}
-    <a href="{{ site.owner.twitter }}" class="social-media-icons"><i class="fa fa-2x fa-twitter-square" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/{{ site.owner.twitter }}" class="social-media-icons"><i class="fa fa-2x fa-twitter-square" aria-hidden="true"></i></a>
   {% endif %}
   {% if site.owner.github %}
     <a href="{{ site.owner.github }}" class="social-media-icons"><i class="fa fa-2x fa-github-square" aria-hidden="true"></i></a>
