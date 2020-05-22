@@ -8,16 +8,16 @@
 <meta name="author" content="Jiaqi Wu">
 <meta name="description" content="Computer science student at University of Illinois.
 ">
-<meta name="keywords" content="arizona state university, university of illinois, uiuc, computational biology, bioinformatics, computer science student, developer, researcher">
+<meta name="keywords" content="arizona state university, university of illinois, uiuc, computational biology, bioinformatics, computer science, developer, software engineer, graduate, masters, student, researcher">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jiaqi Wu">
 <meta property="og:description" content="Computer science student at University of Illinois.
 ">
 <meta property="og:url" content="http://localhost:4000/2019/01/05/tcga.html">
-<meta property="og:site_name" content="">
+<meta property="og:site_name" content="Jiaqi Wu">
 
-<meta property="og:image" content="lab.png">
+<meta property="og:image" content="lab.png" alt="Jiaqi Wu">
 
 <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|PT+Serif" rel="stylesheet">
 
@@ -74,15 +74,15 @@
 
 <p>Processing and organizing the data from TCGA to a form that I could use for Tensorflow turned out to be the most difficult part of this project, so here are the steps I followed, and resources I found helpful along the way.</p>
 
-<h2 id="1-microrna-expression-profiles">1: MicroRNA expression profiles</h2>
+<h2 id="1-microrna-mirna-expression-profiles">1: MicroRNA (miRNA) expression profiles</h2>
 
 <p>I started by reading discussions on Biostars. I was surprised by the lack of detailed documentation for handling TCGA data for beginners.</p>
 
-<h3 id="11-downloading-raw-data-with-gdc">1.1: Downloading raw data with GDC</h3>
+<h3 id="11-bulk-downloading-raw-data-with-gdc">1.1: Bulk downloading raw data with GDC</h3>
 
-<p>I downloaded 17 datasets from <a href="https://portal.gdc.cancer.gov/">TCGA</a>, but will only focus on three in this post. TCGA has two tiers of data: free and controlled. The controlled set requires special access (you need to apply for it). So instead, I chose only the TXT files (consisting of transcriptome profiles). This sped up my processing a bit, since the controlled tier contains BAM sequencing reads of ~60-200MB.</p>
+<p>I downloaded 17 datasets from <a href="https://portal.gdc.cancer.gov/">TCGA</a>. TCGA has two tiers of data: free and controlled. The controlled set requires special access (you need to apply for it). So instead, I chose only the TXT files (consisting of transcriptome profiles). This sped up my processing a bit, since the controlled tier contains BAM sequencing reads of ~<code class="highlighter-rouge">60-200MB</code>.</p>
 
-<p>Once I had all my TXT files for one tissue origin site in the cart, I downloaded the GDC Manifest. Since I was downloading to a cluster, I used the <a href="https://gdc.cancer.gov/access-data/gdc-data-transfer-tool">GDC-Client</a>:</p>
+<p>Once I had all my TXT files for one tissue origin site in the cart, I downloaded the GDC Manifest. The manifest is just a file containing a list of the files you have requested. Since I was downloading to a cluster, I used the <a href="https://gdc.cancer.gov/access-data/gdc-data-transfer-tool">GDC-Client</a>:</p>
 
 <p><code class="highlighter-rouge">./gdc-client download -m $MANIFEST</code></p>
 
@@ -95,14 +95,14 @@
 <details><summary>More on miRNA isoforms</summary>
 <p>
 
-Each row in the isoforms file contains the calculated expression for each individual miRNA isoform observed, per sample. A common way to process this data is by taking the max or sum of all counts associated with a specific miRNA. If there are multiple isoforms for a given miRNA in each sample, then the expression is summed. 
+Each row in the isoforms file contains the calculated expression for an individual miRNA isoform observed, per sample. A common way to process this data is by taking the max or sum of all isoform counts associated with a specific miRNA. In this project, when there are multiple isoforms for a given miRNA in each sample, then the expression is summed. 
 
 </p>
 </details>
 
-<p>Now, I move all the files out of their folders and into one directory. We can use <a href="https://github.com/rptashkin/TCGA_miRNASeq_matrix">rptashkin’s TCGA_miRNAseq_matrix</a> R script to obtain a complete matrix of summed miRNA isoforms from the individual samples. The rows represent miRNAs, and the columns represent samples.</p>
+<p>Now, I move all the files out of their folders and into one directory. We can use <a href="https://github.com/rptashkin/TCGA_miRNASeq_matrix">rptashkin’s TCGA_miRNAseq_matrix</a> R script to obtain a complete matrix of summed miRNA isoforms from the individual samples. <em>The rows represent miRNAs (our features), and the columns represent samples</em>.</p>
 
-<p>I add a row called “label” and manually label it with the corresponding cancer type (i.e., BRCA, ESCA, SKCM). Then, I repeat this process with all the cancer types (I had 17). Once I have 17 labeled matrices, I merge them in R, and transpose. Now, the final matrix has samples from all 17 cancer types, where the columns represent miRNAs, and the rows are samples. I randomize, split the label column, and import into Python for machine learning analysis.</p>
+<p>I add a row called “label” and manually label it with the corresponding cancer type (i.e., BRCA, ESCA, SKCM). Then, I repeat this process with all the cancer types (I had 17). Once I have 17 labeled matrices, I merge them in R, and transpose. Now, the final matrix has samples from all 17 cancer types, where the columns represent miRNAs, and the rows are samples. I randomize, split the label column from the real data, and import into Python for machine learning analysis.</p>
 
 <details><summary>Importing R dataframe to Python</summary>
 <p>
@@ -114,17 +114,19 @@ After splitting my data into a train and test set, and isolating the labels colu
 </p>
 </details>
 
+<p>This could have been done entirely in Python, but I wanted to utilize the pre-existing scripts, which were in R. Choose your battles!</p>
+
 <h2 id="2-dna-methylation-expression-profiles">2: DNA methylation expression profiles</h2>
 
 <p>DNA methylation was a little more complicated than miRNAs, and I could no longer use the same script to turn individual samples into one big matrix. So, I had to do some more digging.</p>
 
 <h3 id="21-downloading-tcga-data-using-tcga2stat">2.1: Downloading TCGA data using TCGA2STAT</h3>
 
-<p>I found an R package <a href="http://www.liuzlab.org/TCGA2STAT/">TCGA2STAT</a> that enables users to directly download TCGA data into an analysis-ready format, which is exactly what I was looking for.</p>
+<p>I found an R package <a href="http://www.liuzlab.org/TCGA2STAT/">TCGA2STAT</a> that enables users to directly download TCGA data into an analysis-ready format, which is exactly what I was looking for. (Turns out, we could’ve used this for miRNAs as well…)</p>
 
 <p>Because I only needed it for methylation, I extracted the code relevant to DNA methylation. The altered version is available in my <a href="https://github.com/programmingprincess/tumor-origin/blob/master/dnam/tcga2stat.R">repository</a>.</p>
 
-<p>TCGA2STAT allows you to specify the type of data you wish to download; I used Illumina 27K methylation profiles.</p>
+<p>TCGA2STAT allows you to specify the type of data you wish to download, but it is 27K by default. This type stands for the number of probes, or the number of features; 27K means 27,000 features. As this was the most commonly available type for TCGA (and conveniently smaller), I went ahead and downloaded the 27K types.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 27K is selected by default</span><span class="w">
 </span><span class="n">methyl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">getTCGA</span><span class="p">(</span><span class="n">disease</span><span class="o">=</span><span class="s2">"LUAD"</span><span class="p">,</span><span class="w"> </span><span class="n">data.type</span><span class="o">=</span><span class="s2">"Methylation"</span><span class="p">)</span><span class="w">
@@ -154,7 +156,7 @@ After splitting my data into a train and test set, and isolating the labels colu
 
 </span><span class="n">write.table</span><span class="p">(</span><span class="n">t_data</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"LUAD-methyl-labeled"</span><span class="p">,</span><span class="s2">".txt"</span><span class="p">),</span><span class="w"> </span><span class="n">append</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
 
-<p>The <code class="highlighter-rouge">$dat</code> attribute of the returned data structure gives us a matrix, where, again, the rows represent a CpG site and columns represent a sample. I transform the matrix, add a label for the origin site/disease type (i.e., LUAD), and store as a .txt file. This is repeated for each origin site I wanted to look at, and then all the .txt files are merged, resulting in a matrix with their labeled origin sites.</p>
+<p>The <code class="highlighter-rouge">$dat</code> attribute of the returned data structure gives us a matrix, where, again, <em>the rows represent a CpG site and columns represent a sample</em>. I transform the matrix, add a label for the origin site/disease type (i.e., LUAD), and store as a .txt file. This is repeated for each origin site I wanted to look at, and then all the .txt files are merged, resulting in a matrix with their labeled origin sites.</p>
 
 <h3 id="22-feature-selection-in-r">2.2: Feature selection in R</h3>
 
@@ -162,9 +164,11 @@ After splitting my data into a train and test set, and isolating the labels colu
 
 <h2 id="3-conclusion">3: Conclusion</h2>
 
-<p>Now, we have two datasets ready to be analyzed in Python. Examples of how to build machine learning models based on the processed data are available on <a href="https://github.com/programmingprincess/tumor-origin">GitHub</a>.</p>
+<p>Now, we have two datasets ready to be analyzed in Python. Using just an out-of-the-box random forest classifier from SKLearn already yields decent results for most cancer types. However, I wanted to take it a step further to reduce the false negative rates for cancer types that have been traditionally difficult to classify (i.e., esophageal, pancreatic, and lung).</p>
 
-<p>The main effort was processing TCGA data, a step that I could only find very scattered documentation for. Hope this post helps other beginners trying to work with microRNA and DNA methylation data! :)</p>
+<p>If you are interested in the Tensorflow model I built to predict cancer type based on miRNAs and methylation, the code and results are available at <a href="https://github.com/programmingprincess/tumor-origin">GitHub</a>.</p>
+
+<p>The main effort and largest learning curve was processing TCGA data, a step that I could only find very scattered documentation for. I hope this post helps others who are trying to work with microRNA and DNA methylation data for the first time. I would love to hear about what you did with this data!</p>
 
 <p>Here’s a list of resources I referenced for data processing:</p>
 <ul>
@@ -180,22 +184,39 @@ After splitting my data into a train and test set, and isolating the labels colu
 
     <div class="keep-in-touch">
       <p>
-        Tweet me <a href="https://twitter.com/https://twitter.com/thejiaqiwu">@https://twitter.com/thejiaqiwu</a> if you like this post.
+        Tweet me <a href="https://twitter.com/thejiaqiwu">@thejiaqiwu</a> if you like this post.
       </p>
     </div>
 
 
-<!-- <a href="https://twitter.com/share" class="twitter-share-button" data-via="https://twitter.com/thejiaqiwu" data-size="large" data-hashtags="Jiaqi Wu">Tweet</a>
+<!-- <a href="https://twitter.com/share" class="twitter-share-button" data-via="thejiaqiwu" data-size="large" data-hashtags="Jiaqi Wu">Tweet</a>
  
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
 
 
 
+
+  <!--Social media-->
+<div class="social-footer">
+  
+    <a href="https://www.linkedin.com/in/jiaqiwu1" class="social-media-icons"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true"></i></a>
+  
+  
+    <a href="mailto:jiaqiwu@asu.edu" class="social-media-icons"><i class="fa fa-2x fa-envelope-square" aria-hidden="true"></i></a>
+  
+    
+    <a href="https://twitter.com/thejiaqiwu" class="social-media-icons"><i class="fa fa-2x fa-twitter-square" aria-hidden="true"></i></a>
+  
+    
+    <a href="https://github.com/programmingprincess" class="social-media-icons"><i class="fa fa-2x fa-github-square" aria-hidden="true"></i></a>
+    
+
+  <!-- Pagination links -->
   
 
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '']);
+  _gaq.push(['_setAccount', 'UA-112417000-1']);
   _gaq.push(['_trackPageview']);
   (function() {
   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
