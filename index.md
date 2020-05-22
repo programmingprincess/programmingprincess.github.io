@@ -9,7 +9,7 @@ group: "navigation"
 
 {{site.about}} -->
 
-<img class="portrait" src="portrait_2019.jpeg">
+<img class="portrait" src="portrait_2019.jpeg" width="250px">
 
 I'm a second year M.S. student in computer science at [UIUC](https://cs.illinois.edu/). My research focuses on interpreting patterns of somatic mutations in tumors, in order to better understand cancer evolution spatially and temporally. 
 
