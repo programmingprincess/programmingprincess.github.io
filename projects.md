@@ -81,7 +81,7 @@ See more miscellaneous projects on my [GitHub](http://github.com/programmingprin
 
 <hr>
 
-<div class="pagination social-footer">
+<!-- <div class="pagination social-footer">
   {% if site.owner.linkedin %}
     <a href="{{ site.owner.linkedin }}" class="social-media-icons"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true"></i></a>
   {% endif %}
@@ -95,3 +95,4 @@ See more miscellaneous projects on my [GitHub](http://github.com/programmingprin
     <a href="{{ site.owner.github }}" class="social-media-icons"><i class="fa fa-2x fa-github-square" aria-hidden="true"></i></a>
   {% endif %}
 </div>
+ -->

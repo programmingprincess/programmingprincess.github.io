@@ -1,7 +1,5 @@
-
-{% if paginator %}
-<!-- Pagination links -->
-<div class="pagination">
+<!--Social media-->
+<div class="{% if paginator %}pagination{% else %}social-footer{% endif %}">
   {% if site.owner.linkedin %}
     <a href="{{ site.owner.linkedin }}" class="social-media-icons"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true"></i></a>
   {% endif %}
@@ -14,22 +12,26 @@
   {% if site.owner.github %}  
     <a href="{{ site.owner.github }}" class="social-media-icons"><i class="fa fa-2x fa-github-square" aria-hidden="true"></i></a>
   {% endif %}  
-  {% if paginator.next_page %}
-    <a href="{{site.url}}/blog/page{{paginator.next_page}}" class="older"><span class="mega-octicon octicon-playback-{% if site.rtl %}fast-forward{% else %}rewind{% endif %}" style="min-width: 32px;"></span></a>
-  {% else %}
-    <span class="next"><span class="mega-octicon octicon-playback-{% if site.rtl %}fast-forward{% else %}rewind{% endif %}" style="min-width: 32px;"></span></span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a href="{{site.url}}/blog" class="newer"><span class="mega-octicon octicon-playback-{% if site.rtl %}rewind{% else %}fast-forward{% endif %}" style="min-width: 32px;"></span></a>
+
+  <!-- Pagination links -->
+  {% if paginator %}
+    {% if paginator.next_page %}
+      <a href="{{site.url}}/blog/page{{paginator.next_page}}" class="older"><span class="mega-octicon octicon-playback-{% if site.rtl %}fast-forward{% else %}rewind{% endif %}" style="min-width: 32px;"></span></a>
     {% else %}
-      <a href="{{site.url}}/blog/page{{paginator.previous_page}}" class="newer"><span class="mega-octicon octicon-playback-{% if site.rtl %}rewind{% else %}fast-forward{% endif %}" style="min-width: 32px;"></span></a>
+      <span class="next"><span class="mega-octicon octicon-playback-{% if site.rtl %}fast-forward{% else %}rewind{% endif %}" style="min-width: 32px;"></span></span>
     {% endif %}
+    {% if paginator.previous_page %}
+      {% if paginator.page == 2 %}
+        <a href="{{site.url}}/blog" class="newer"><span class="mega-octicon octicon-playback-{% if site.rtl %}rewind{% else %}fast-forward{% endif %}" style="min-width: 32px;"></span></a>
+      {% else %}
+        <a href="{{site.url}}/blog/page{{paginator.previous_page}}" class="newer"><span class="mega-octicon octicon-playback-{% if site.rtl %}rewind{% else %}fast-forward{% endif %}" style="min-width: 32px;"></span></a>
+      {% endif %}
   {% else %}
     <span class="previous"><span class="mega-octicon octicon-playback-{% if site.rtl %}rewind{% else %}fast-forward{% endif %}" style="min-width: 32px;"></span></span>
   {% endif %}
 </div>
 {%  endif %}
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '{{site.google_analytics}}']);
