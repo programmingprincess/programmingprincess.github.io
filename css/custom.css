@@ -54,10 +54,6 @@ details p {
 	margin-left: 1em;
 }
 
-.caption {
-	font-size: 0.80em;
-}
-
 .award {
 	color: #B03A2E
 }
@@ -115,3 +111,8 @@ p.meta {
 .social-media-icons:hover {
 	color: #2382c8;
 }
+
+p.caption {
+	font-size: 0.80em;
+}
+
