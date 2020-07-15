@@ -18,9 +18,12 @@ header {
 
 a.top-link,
 a.top-link:hover {
-  color: #999;
-  font-size: 30px;
-  text-decoration: none
+  /*color: #999;*/
+  color: #555;
+  font-size: 35px;
+  text-decoration: none;
+  font-family: 'Homemade Apple';
+
 }
 
 ul, ol{
@@ -49,6 +52,10 @@ summary {
 
 details p {
 	margin-left: 1em;
+}
+
+.caption {
+	font-size: 0.80em;
 }
 
 .award {
