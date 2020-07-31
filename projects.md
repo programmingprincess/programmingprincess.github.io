@@ -10,7 +10,7 @@ group: "navigation"
 {{site.about}} -->
 My research projects span bioinformatics, data mining, and machine learning, and use mostly python, bash, and sometimes R. My web projects are mostly full-stack, built with JavaScript and occasionally Flask. 
 
-Some of my current and past projects, arranged from most to least recent. Open source projects are linked to GitHub. 
+Below are some of my current and past projects, arranged from most to least recent. Open source projects are linked to GitHub. 
 
 <!-- <div class="center">
 <a href="#research">Research</a> | <a href="#web">Web</a> | <a href="#app">App</a> </div>
