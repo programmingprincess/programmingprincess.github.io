@@ -21,7 +21,7 @@ Outside of research, I am passionate about open-source and promoting inclusivity
 <i class="fa fa-book"></i> Recent Favorite: [Murder on the Orient Express](https://www.goodreads.com/review/list/11107091?shelf=currently-reading) by Agatha Christie
 
 ## Updates 
-* April '20: Our paper on visualizing the spatial clonal architecture in tumors was accepted to ISMB 2020. 
+* April '20: Our [paper](https://doi.org/10.1093/bioinformatics/btaa471) on visualizing the spatial clonal architecture in tumors was accepted to ISMB 2020. 
 * May '19: I joined Facebook as a software engineering intern on their Pages Ranking team.
 * Aug '18: I began my graduate studies at the University of Illinois, advised by Prof. [Mohammed El-Kebir](http://www.el-kebir.net/).
 * Aug '18: Our paper on diverse homoserine lactone systems for cellular communication is available in [PLoS One](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202294).
