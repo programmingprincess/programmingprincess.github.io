@@ -24,7 +24,7 @@ Outside of research, I am passionate about open-source and promoting inclusivity
 * April '20: Our [paper](https://doi.org/10.1093/bioinformatics/btaa471) on visualizing the spatial clonal architecture in tumors was accepted to ISMB 2020. 
 * May '19: I joined Facebook as a software engineering intern on their Pages Ranking team.
 * Aug '18: I began my graduate studies at the University of Illinois, advised by Prof. [Mohammed El-Kebir](http://www.el-kebir.net/).
-* Aug '18: Our paper on diverse homoserine lactone systems for cellular communication is available in [PLoS One](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202294).
+* Aug '18: Our [paper](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202294) on diverse homoserine lactone systems for cellular communication is available in PLoS One.
 * May '18: I [graduated](https://fullcircle.asu.edu/fulton-schools/meet-the-fulton-schools-outstanding-graduates-of-spring-2018/#et_pb_row_13) from ASU! 
 * Feb '18: Our work on [Study Genie](https://dl.acm.org/citation.cfm?id=3162340), an intelligent web-based study platform, was accepted in ACM SIGCSE's student research competition.  
 * Nov '16: ASU team won gold medal, 2 awards, and 2 nominations at [international synthetic biology competition](https://asunow.asu.edu/20161206-asu-puts-impressive-performance-igem).
