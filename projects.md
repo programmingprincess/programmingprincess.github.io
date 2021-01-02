@@ -8,7 +8,7 @@ group: "navigation"
 ![user-avatar]({{ site.owner.avatar }})
 
 {{site.about}} -->
-My research projects span bioinformatics, data mining, and machine learning, and use mostly python, bash, and sometimes R. My web projects are mostly full-stack, built with JavaScript and occasionally Flask. 
+My research projects span bioinformatics, data mining, and machine learning, and use mostly python, bash, and sometimes R. My web projects are mostly full-stack, built with Node or Flask. 
 
 Below are some of my current and past projects, arranged from most to least recent. Open source projects are linked to GitHub. 
 
@@ -20,13 +20,10 @@ Below are some of my current and past projects, arranged from most to least rece
 <div id="research"> </div>
 ## Research 
 
-* [Clustering SQL queries](https://github.com/SushAzad/QueryClustering) for structure and semantics. Current. 
+* [Clustering SQL queries](https://github.com/SushAzad/QueryClustering) for structure and semantics. 2020. 
 
 * [ClonArch: Visualizing the spatial clonal architecture of tumors](https://github.com/elkebir-group/ClonArch). <br>
 <span class = "award">To appear in ISMB 2020.</span> [[Preprint](https://www.biorxiv.org/content/10.1101/2020.04.06.027912v1.full.pdf+html)]
-
-
-<!-- From raw FASTA files to variant calling and copy number calling. *2019* -->
 
 * [Tasty-search: Search engine feedback for difficult queries](https://github.com/programmingprincess/tasty-search) – designed to incorporate explicit user feedback into supervised learning-to-rank algorithms. 2019.
 
@@ -44,13 +41,10 @@ Below are some of my current and past projects, arranged from most to least rece
 
 * Study Genie ([abstract](https://dl.acm.org/citation.cfm?id=3162340)) – a web-based study tool that explores the role of collaborative learning and note-taking on student performance in computer science courses. <br> <span class = "award">ACM SIGCSE 2018.</span>
 
-<!-- Proceedings of the 49th ACM Technical Symposium on Computer Science Education -->
-
 <!-- * Clustering colon cancer subtypes - identifying colon cancer subtypes by clustering [gene expression data](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001453). (Machine learning methods: R). *2016* -->
 
 <!-- * RNA-seq analysis of synthetic fusion protein on the production of insulin. *2018*
  -->
-
 
 * Cell to cell communication systems for genetic circuitry – characterizing crosstalk in bacterial homoserine lactone signaling systems. (Wet lab: cloning, primer design). 2017. <span class = "award">Gold medal, 2 awards, 2 nominations at [iGEM 2016](http://2016.igem.org/Team:Arizona_State); published in [PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202294)</span>
 
@@ -58,7 +52,7 @@ Below are some of my current and past projects, arranged from most to least rece
 
 ## Web 
 
-* [Stock Spy](https://github.com/programmingprincess/stock_spy) – analyze historical trends for any stock based on contextual, time-relevant news. HackIllinois 2020.
+* [Stock Spy](https://stock-spy.herokuapp.com/) – analyze historical trends for any stock based on contextual, time-relevant news. HackIllinois 2020.
 
 * Personal Website ([demo](http://jiaqiwu.com/v1)) – version 1 of personal website with a heavier design-focus, using Bootstrap. Compatible across desktop, laptop, tablet, and mobile. 2018.
 
