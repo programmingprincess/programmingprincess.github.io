@@ -12,6 +12,6 @@
     "clean-css": ">=4.1.11"
   },
   "dependencies": {
-    "grunt": "^1.0.4"
+    "grunt": "^1.5.2"
   }
 }
