@@ -15,9 +15,6 @@ I'm a second year M.S. student in computer science at [UIUC](https://cs.illinois
 
 Outside of research, I am passionate about open-source and promoting inclusivity in STEM. I enjoy painting, hiking, and [eating ice cream](https://www.instagram.com/kiky.cones/). 
 
-<!-- 
- Prior to grad school, I interned at Salesforce as a Software Engineer, developing smart tools for the [Service Cloud Einstein](https://www.salesforce.com/blog/2018/07/service-cloud-einstein-bots-customer-experience.hmtl) team. I graduated from Arizona State University in 2018, where I researched in [The Haynes Lab](https://khayneslab.wordpress.com/) and the [Computing Systems & Informatics (CSI) Lab](https://sites.google.com/a/asu.edu/csi/).  -->
-
 <i class="fa fa-book"></i> Recent Favorite: [Murder on the Orient Express](https://www.goodreads.com/review/list/11107091?shelf=currently-reading) by Agatha Christie
 
 ## Updates 
